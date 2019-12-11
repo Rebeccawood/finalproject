@@ -50,6 +50,9 @@ class Navigation extends Component {
             <Nav.Link as="li">
               <Link to="/profile">My Profile</Link>
             </Nav.Link>
+            <Nav.Link as="li">
+              <Link to="/search">Search Profiles</Link>
+            </Nav.Link>
             <Nav.Link as="li" onClick={this.logoutUser}>
               Logout
             </Nav.Link>

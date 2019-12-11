@@ -6,7 +6,7 @@ import { Container, Row, Col} from "react-bootstrap";
 import ConditionsTeacher from "./ConditionsTeacher";
 import HobbiesPrice from "./HobbiesPrice";
 import Availability from "./Availability";
-import LearnSpeakLanguages from "./LearnSpeakLanguages";
+import LearnTeachLanguages from "./LearnTeachLanguages.js";
 import SpokenQualifications from "./SpokenQualifications";
 import GeneralInfo from "./GeneralInfo"
 
@@ -30,7 +30,7 @@ class Profile extends Component {
 
           <Col md={6}>
             <Availability loggedInUser={this.props.loggedInUser} />
-            <LearnSpeakLanguages loggedInUser={this.props.loggedInUser} />
+            <LearnTeachLanguages loggedInUser={this.props.loggedInUser} />
             <SpokenQualifications loggedInUser={this.props.loggedInUser} />
             <HobbiesPrice loggedInUser={this.props.loggedInUser} />
             <ConditionsTeacher loggedInUser={this.props.loggedInUser} />

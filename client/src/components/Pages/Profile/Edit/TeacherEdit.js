@@ -16,7 +16,7 @@ class TeacherEdit extends Component {
       teachingLanguages: [],
       availabilityHours: [],
       availabilityDays: [],
-      price: "",
+      price: 0,
       qualifications: "",
       conditions: "",
       age: 0,
@@ -34,12 +34,14 @@ class TeacherEdit extends Component {
           teachingLanguages: [],
           availabilityHours: [],
           availabilityDays: [],
-          price: "",
+          price: 0,
           qualifications: "",
           conditions: "",
           age: 0,
           gender: ""
         });
+      })
+      .then(() => {
         this.props.closeModalWindow();
         this.props.history.push("/profile");
       })
@@ -71,24 +73,6 @@ class TeacherEdit extends Component {
       <>
         <Form onSubmit={this.handleSubmit}>
           <h1>Teacher Profile</h1>
-          {/* <Form.Group>
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              name="username"
-              onChange={this.handleInputChange}
-              value={this.state.username}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              onChange={this.handleInputChange}
-              value={this.state.email}
-            />
-          </Form.Group> */}
 
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>About me</Form.Label>
@@ -130,7 +114,7 @@ class TeacherEdit extends Component {
               <option>Italian</option>
               <option>Portuguese</option>
               <option>Russian</option>
-              <option>Chinese/Mandarin</option>
+              <option>Mandarin Chinese</option>
             </Form.Control>
           </Form.Group>
 

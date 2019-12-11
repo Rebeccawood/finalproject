@@ -79,54 +79,94 @@ class BuddyEdit extends Component {
             />
           </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Languages I already speak</Form.Label>
+          <Form.Group controlId="exampleForm.ControlSelect2">
+            <Form.Label>
+              Languages I already speak (you can pick more than one):
+            </Form.Label>
             <Form.Control
-              type="text"
+              as="select"
+              multiple
               name="languagesSpoken"
               onChange={this.handleInputChange}
               value={this.state.languagesSpoken}
-            />
+            >
+              <option>English</option>
+              <option>German</option>
+              <option>Spanish</option>
+              <option>French</option>
+              <option>Italian</option>
+              <option>Portuguese</option>
+              <option>Russian</option>
+              <option>Mandarin Chinese</option>
+            </Form.Control>
           </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Languages I am learning</Form.Label>
+          <Form.Group controlId="exampleForm.ControlSelect2">
+            <Form.Label>
+              Languages I am learning (you can pick more than one):
+            </Form.Label>
             <Form.Control
-              type="text"
+              as="select"
+              multiple
               name="learningLanguages"
               onChange={this.handleInputChange}
               value={this.state.learningLanguages}
-            />
+            >
+              <option>English</option>
+              <option>German</option>
+              <option>Spanish</option>
+              <option>French</option>
+              <option>Italian</option>
+              <option>Portuguese</option>
+              <option>Russian</option>
+              <option>Mandarin Chinese</option>
+            </Form.Control>
           </Form.Group>
-
-          <Form.Group controlId="formGridState">
-            <Form.Label>Available Days:</Form.Label>
+          <Form.Group controlId="exampleForm.ControlSelect2">
+            <Form.Label>
+              Days of the week I am available (you can pick more than one):
+            </Form.Label>
             <Form.Control
               as="select"
+              multiple
               name="availabilityDays"
               onChange={this.handleInputChange}
               value={this.state.availabilityDays}
             >
-              <option>...Choose</option>
-              <option>Weekdays</option>
-              <option>Weekends</option>
-              <option>All days</option>
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+              <option>Thursday</option>
+              <option>Friday</option>
+              <option>Saturday</option>
+              <option>Sunday</option>
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="formGridState">
-            <Form.Label>Available Hours:</Form.Label>
+          <Form.Group controlId="exampleForm.ControlSelect2">
+            <Form.Label>
+              Hours I am available (you can pick more than one):
+            </Form.Label>
             <Form.Control
               as="select"
+              multiple
               name="availabilityHours"
               onChange={this.handleInputChange}
               value={this.state.availabilityHours}
             >
-              <option>...Choose</option>
-              <option>Mornings</option>
-              <option>Afternoons</option>
-              <option>Evenings</option>
-              <option>All day</option>
+              <option>8:00 - 9:00</option>
+              <option>9:00 - 10:00</option>
+              <option>10:00 - 11:00</option>
+              <option>11:00 - 12:00</option>
+              <option>12:00 - 13:00</option>
+              <option>13:00 - 14:00</option>
+              <option>14:00 - 15:00</option>
+              <option>15:00 - 16:00</option>
+              <option>16:00 - 17:00</option>
+              <option>17:00 - 18:00</option>
+              <option>18:00 - 19:00</option>
+              <option>19:00 - 20:00</option>
+              <option>20:00 - 21:00</option>
             </Form.Control>
           </Form.Group>
 

@@ -14,6 +14,7 @@ class GeneralInfo extends Component {
           className="profile-img"
           alt="profile-picture"
         />
+        
 
         {this.props.loggedInUser.buddy ? (
           <p>This is a buddy-profile</p>

@@ -6,16 +6,16 @@ const teacherSchema = new Schema(
     price: Number,
     teachingLanguages: {
       type: [String],
-      enum: [
-        "German",
-        "English",
-        "Spanish",
-        "French",
-        "Portuguese",
-        "Russian",
-        "Italian",
-        "Chinese/Manderin"
-      ]
+      // enum: [
+      //   "German",
+      //   "English",
+      //   "Spanish",
+      //   "French",
+      //   "Portuguese",
+      //   "Russian",
+      //   "Italian",
+      //   "Mandarin Chinese"
+      // ]
     },
     conditions: String,
     qualifications: String

@@ -9,6 +9,7 @@ import "./styelsheets/App.css";
 import Home from "./components/Pages/Home";
 import Profile from "./components/Pages/Profile/Profile";
 import Dashboard from "./components/Pages/Dashboard";
+import SearchProfiles from "./components/Pages/Matching/SearchProfiles"
 
 //------------- UI Components ----------//
 import Navigation from "./components/UI/Navbar";
@@ -24,6 +25,7 @@ class App extends Component {
   // --------------------- USER CONFIG ------------------------ //
   setTheUser = user => {
     this.setState({ loggedInUser: user });
+    
     console.log("the logged in user is:", this.state.loggedInUser);
   };
 
@@ -83,6 +85,17 @@ class App extends Component {
                 setUser={this.setTheUser}
               />
             )}
+          />
+          <Route
+            exact
+            path="/search"
+            render={() =>
+              this.state.loggedInUser ? (
+                <SearchProfiles loggedInUser={this.state.loggedInUser} />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
           />
         </Switch>
       </>

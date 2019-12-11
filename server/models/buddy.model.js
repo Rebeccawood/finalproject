@@ -5,29 +5,29 @@ const buddySchema = new Schema(
   {
     languagesSpoken: {
       type: [String],
-      enum: [
-        "German",
-        "English",
-        "Spanish",
-        "French",
-        "Portuguese",
-        "Russian",
-        "Italian",
-        "Chinese/Manderin"
-      ]
+      // enum: [
+      //   "German",
+      //   "English",
+      //   "Spanish",
+      //   "French",
+      //   "Portuguese",
+      //   "Russian",
+      //   "Italian",
+      //   "Mandarin Chinese"
+      // ]
     },
     learningLanguages: {
       type: [String],
-      enum: [
-        "German",
-        "English",
-        "Spanish",
-        "French",
-        "Portuguese",
-        "Russian",
-        "Italian",
-        "Chinese/Manderin"
-      ]
+      // enum: [
+      //   "German",
+      //   "English",
+      //   "Spanish",
+      //   "French",
+      //   "Portuguese",
+      //   "Russian",
+      //   "Italian",
+      //   "Mandarin Chinese"
+      // ]
     },
     Hobbies: String
   },

@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import {  Modal, Button } from "react-bootstrap";
 import EditBuddyProfile from "./Edit/EditBuddyProfile.js";
 import EditTeacherProfile from "./Edit/EditTeacherProfile.js";
-
+import PhotoEdit from "./Edit/PhotoEdit"
 class ButtonsEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showModalWindowBuddy: false,
-      showModalWindowTeacher: false
+      showModalWindowTeacher: false,
+      showModalWindowImg: false,
     };
   }
 
@@ -18,6 +19,11 @@ class ButtonsEdit extends Component {
   // ------------------ MODAL Teacher --------------------//
   handleShowTeacher = () => this.setState({ showModalWindowTeacher: true });
   handleCloseTeacher = () => this.setState({ showModalWindowTeacher: false });
+
+  // ------------------ MODAL Photo --------------------//
+  handleShowImg = () => this.setState({ showModalWindowImg: true });
+  handleCloseImg = () => this.setState({ showModalWindowImg: false });
+
 
   //------------------------------------------------------//
 
@@ -33,6 +39,10 @@ class ButtonsEdit extends Component {
             Edit Teacher Profile
           </Button>
         )}
+       <br></br>
+        <Button variant="outline-dark" onClick={this.handleShowImg}>
+          Change Picture
+        </Button>
 
         <Modal
           size="lg"
@@ -43,7 +53,6 @@ class ButtonsEdit extends Component {
             <EditBuddyProfile
               loggedInUser={this.props.loggedInUser}
               setUser={this.props.setUser}
-              className="modal"
               closeModalWindow={this.handleCloseBuddy}
             />
           </Modal.Body>
@@ -58,8 +67,21 @@ class ButtonsEdit extends Component {
             <EditTeacherProfile
               loggedInUser={this.props.loggedInUser}
               setUser={this.props.setUser}
-              className="modal"
               closeModalWindow={this.handleCloseTeacher}
+            />
+          </Modal.Body>
+        </Modal>
+
+          <Modal
+          size="lg"
+          show={this.state.showModalWindowImg}
+          onHide={this.handleCloseImg}
+        >
+          <Modal.Body>
+            <PhotoEdit
+              loggedInUser={this.props.loggedInUser}
+              setUser={this.props.setUser}
+              closeModalWindow={this.handleCloseImg}
             />
           </Modal.Body>
         </Modal>

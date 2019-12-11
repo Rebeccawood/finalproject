@@ -89,6 +89,7 @@ authRoutes.post("/login", (req, res, next) => {
       }
 
       // We are now logged in (that's why we can also send req.user)
+      console.log(theUser);
       res.status(200).json(theUser);
     });
   })(req, res, next);
@@ -121,7 +122,7 @@ authRoutes.post("/new/teacher", (req, res) => {
   const { teachingLanguages, price, conditions, qualifications } = req.body;
   const teacher = { teachingLanguages, price, conditions, qualifications };
   const user = { bio, gender, age, availabilityHours, availabilityDays };
-  
+
   Teacher.create(teacher)
     .then(newTeacher => {
       const teacherId = newTeacher._id;
@@ -133,7 +134,7 @@ authRoutes.post("/new/teacher", (req, res) => {
         availabilityHours: user.availabilityHours,
         availabilityDays: user.availabilityDays
       })
-        // .populate("teacher")
+        .populate("teacher")
         .then(user => res.status(200).json(user));
     })
     .catch(err => console.log("DB error", err));
@@ -157,8 +158,7 @@ authRoutes.post("/new/buddy", (req, res) => {
         age: user.age,
         availabilityHours: user.availabilityHours,
         availabilityDays: user.availabilityDays
-      })
-      .then(user => res.status(200).json(user));
+      }).then(user => res.status(200).json(user));
     })
     .catch(err => console.log("DB error", err));
 });

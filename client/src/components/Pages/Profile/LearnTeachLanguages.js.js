@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import List from "./List";
 
-class LearnSpeakLanguages extends Component {
+class LearnTeachLanguages extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -15,11 +15,13 @@ class LearnSpeakLanguages extends Component {
           <h5>Teaching languages:</h5>
         )}
 
-        {this.props.buddy ? (
+        {this.props.loggedInUser.buddy ? (
           <ul>
-            {this.props.buddy.learningLanguages.map((language, idx) => (
-              <List key={idx} list={language} />
-            ))}
+            {this.props.loggedInUser.buddy.learningLanguages.map(
+              (language, idx) => (
+                <List key={idx} list={language} />
+              )
+            )}
           </ul>
         ) : (
           <ul>
@@ -36,4 +38,4 @@ class LearnSpeakLanguages extends Component {
   }
 }
 
-export default LearnSpeakLanguages;
+export default LearnTeachLanguages;

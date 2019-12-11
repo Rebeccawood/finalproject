@@ -20,7 +20,7 @@ class Availability extends Component {
        {this.props.loggedInUser.availabilityHours.map((hour, idx) => (
          <List key={idx} list={hour} />
        ))}
-     </p>
+     </p> 
    </>
  );}
 };

@@ -12,7 +12,7 @@ class Login extends Component {
     this.state = {
       user: { username: "", password: "" },
       showToast: false,
-      toastText: '',
+      toastText: ""
     };
   }
 
@@ -35,6 +35,7 @@ class Login extends Component {
         this.props.history.push("/profile");
       })
       .catch(err => {
+        console.log(err);
         this.handleToastOpen(err.response.data.message);
       });
   };
@@ -67,27 +68,26 @@ class Login extends Component {
           <Button variant="outline-dark" type="submit">
             Login
           </Button>
-          
         </Form>
 
- <Toast
-                    onClose={this.handleToastClose}
-                    show={this.state.showToast}
-                    delay={3000}
-                    autohide
-                    style={{
-                        position: 'fixed',
-                        right: '10px',
-                        bottom: '10px',
-                        minWidth: '250px'
-                    }}>
-                    <Toast.Header>
-                        <strong className="mr-auto">Error</strong>
-                        <small>Session manager</small>
-                    </Toast.Header>
-                    <Toast.Body>{this.state.toastText}</Toast.Body>
-                </Toast>
-
+        <Toast
+          onClose={this.handleToastClose}
+          show={this.state.showToast}
+          delay={3000}
+          autohide
+          style={{
+            position: "fixed",
+            right: "10px",
+            bottom: "10px",
+            minWidth: "250px"
+          }}
+        >
+          <Toast.Header>
+            <strong className="mr-auto">Error</strong>
+            <small>Session manager</small>
+          </Toast.Header>
+          <Toast.Body>{this.state.toastText}</Toast.Body>
+        </Toast>
       </Container>
     );
   }
