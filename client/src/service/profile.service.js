@@ -8,10 +8,5 @@ export default class Services {
     });
   }
 
-//   signup = (username, email, password) =>
-//     this.service.post("/signup", { username, email, password });
-//   login = (username, password) =>
-//     this.service.post("/login", { username, password });
-//   logout = () => this.service.post("/logout");
-//   loggedin = () => this.service.get("/loggedin");
+  getOneProfile = id => this.service.get(`/${id}`)
  }

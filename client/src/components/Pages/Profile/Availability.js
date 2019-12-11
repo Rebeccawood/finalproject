@@ -6,18 +6,25 @@ class Availability extends Component {
     super(props);
     this.state = {}
   }
-  render(){
+  whichUser = () => {
+    
+  }
+
+render(){
+  let userToMap
+  this.props.user ? userToMap = this.props.user : userToMap = this.props.loggedInUser
+
  return (
    <>
      <h5>Available Days:</h5>
      <p>
-       {this.props.loggedInUser.availabilityDays.map((day, idx) => (
+       {userToMap.availabilityDays.map((day, idx) => (
          <List key={idx} list={day} />
        ))}
      </p>
      <h5>Available Hours:</h5>
      <p>
-       {this.props.loggedInUser.availabilityHours.map((hour, idx) => (
+       {userToMap.availabilityHours.map((hour, idx) => (
          <List key={idx} list={hour} />
        ))}
      </p> 

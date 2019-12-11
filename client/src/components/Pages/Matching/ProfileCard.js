@@ -11,13 +11,11 @@ class ProfileCard extends Component {
   render() {
     return (
       <Col className="profile-card" md={4}>
-        <img src={this.props.imageUrl} alt={this.props.username} />
-        <h3>{this.props.username}</h3>
-
-        <p>Age: {this.props.age}</p>
-        <LearnTeachLanguages loggedInUser={this.props.loggedInUser} />
-        {/* {this.props.loggedInUser.teacher && (<p>{this.props.loggedInUser.teacher.price}</p>)} */}
-
+        <img src={this.props.user.imgPath} alt={this.props.user.username} />
+        <h3>{this.props.user.username}</h3>
+        <p>Age: {this.props.user.age}</p>
+        <LearnTeachLanguages loggedInUser={this.props.user} user={this.props.user} />
+        {this.props.user.teacher && (<p>This is a teacher! <br></br> Price: {this.props.user.teacher.price} €/hr</p>)}
         <br></br>
         <Link className="btn btn-sm btn-dark" to={`/profile/${this.props._id}`}>
           See full profile

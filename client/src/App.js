@@ -10,6 +10,7 @@ import Home from "./components/Pages/Home";
 import Profile from "./components/Pages/Profile/Profile";
 import Dashboard from "./components/Pages/Dashboard";
 import SearchProfiles from "./components/Pages/Matching/SearchProfiles"
+import MatchProfile from "./components/Pages/Matching/MatchProfile"
 
 //------------- UI Components ----------//
 import Navigation from "./components/UI/Navbar";
@@ -80,12 +81,25 @@ class App extends Component {
             path="/dashboard"
             render={() => (
               <Dashboard
-                updateTeacher={this.updateTeacher}
+                
                 loggedInUser={this.state.loggedInUser}
                 setUser={this.setTheUser}
               />
             )}
           />
+
+          <Route
+            exact
+            path="/profile/:id"
+            render={() => (
+              <MatchProfile
+                loggedInUser={this.state.loggedInUser}
+                setUser={this.setTheUser}
+              />
+            )}
+          />
+
+          
           <Route
             exact
             path="/search"

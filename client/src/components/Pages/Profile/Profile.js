@@ -3,12 +3,12 @@ import "../../../styelsheets/Profile.css";
 import { Container, Row, Col} from "react-bootstrap";
 
 // ---------------------- COMPONENTS -------------------------//
-import ConditionsTeacher from "./ConditionsTeacher";
-import HobbiesPrice from "./HobbiesPrice";
-import Availability from "./Availability";
-import LearnTeachLanguages from "./LearnTeachLanguages.js";
-import SpokenQualifications from "./SpokenQualifications";
-import GeneralInfo from "./GeneralInfo"
+import ConditionsTeacher from "../Profile/ConditionsTeacher";
+import HobbiesPrice from "../Profile/HobbiesPrice";
+import Availability from "../Profile/Availability"
+import LearnTeachLanguages from "../Profile/LearnTeachLanguages.js";
+import SpokenQualifications from "../Profile/SpokenQualifications";
+import GeneralInfo from "../Profile/GeneralInfo"
 
 class Profile extends Component {
   constructor(props) {

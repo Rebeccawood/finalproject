@@ -30,7 +30,7 @@ class SearchProfiles extends Component {
                     <h1>All profiles that match your preferences</h1>
 
                     <Row>
-                        {this.state.user.map(user => <ProfileCard loggedInUser={this.props.loggedInUser} key={user._id} {...user} />)}
+                        {this.state.user.map(user => <ProfileCard user={this.state.user} loggedInUser={this.props.loggedInUser} key={user._id} {...user} />)}
                     </Row>
                 </Container>
                 </section>
