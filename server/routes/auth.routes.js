@@ -3,6 +3,8 @@ const authRoutes = express.Router();
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user.model");
+const Teacher = require("../models/teacher.model");
+const Buddy = require("../models/buddy.model");
 
 authRoutes.post("/signup", (req, res, next) => {
   const { username, email, password } = req.body;
@@ -102,20 +104,62 @@ authRoutes.get("/loggedin", (req, res, next) => {
   // req.isAuthenticated() is defined by passport
   if (req.isAuthenticated()) {
     User.findById(req.user._id)
-      .populate("Buddy")
-      .populate("Teacher")
+      .populate("buddy")
+      .populate("teacher")
       .then(user => {
-        res.status(200).json({ user });
+        res.status(200).json(user);
       });
     return;
   }
   res.status(403).json({ message: "Unauthorized" });
 });
 
-authRoutes.get("/teacher/update", (req, res) => {
-  const user = req.params._id
-  User.findbyIdAndUpdate(user)
-    .then(theUser => res.json({theUser}))
+// ------------------ UPDATE USER WITH TEACHER --------------------//
+
+authRoutes.post("/new/teacher", (req, res) => {
+  const { bio, gender, age, availabilityHours, availabilityDays } = req.body;
+  const { teachingLanguages, price, conditions, qualifications } = req.body;
+  const teacher = { teachingLanguages, price, conditions, qualifications };
+  const user = { bio, gender, age, availabilityHours, availabilityDays };
+  
+  Teacher.create(teacher)
+    .then(newTeacher => {
+      const teacherId = newTeacher._id;
+      User.findByIdAndUpdate(req.user._id, {
+        teacher: teacherId,
+        bio: user.bio,
+        gender: user.gender,
+        age: user.age,
+        availabilityHours: user.availabilityHours,
+        availabilityDays: user.availabilityDays
+      })
+        // .populate("teacher")
+        .then(user => res.status(200).json(user));
+    })
+    .catch(err => console.log("DB error", err));
+});
+
+// ------------------ UPDATE USER WITH BUDDY --------------------//
+
+authRoutes.post("/new/buddy", (req, res) => {
+  const { bio, gender, age, availabilityHours, availabilityDays } = req.body;
+  const { languagesSpoken, learningLanguages } = req.body;
+  const buddy = { languagesSpoken, learningLanguages };
+  const user = { bio, gender, age, availabilityHours, availabilityDays };
+
+  Buddy.create(buddy)
+    .then(newBuddy => {
+      const buddyId = newBuddy._id;
+      User.findByIdAndUpdate(req.user._id, {
+        buddy: buddyId,
+        bio: user.bio,
+        gender: user.gender,
+        age: user.age,
+        availabilityHours: user.availabilityHours,
+        availabilityDays: user.availabilityDays
+      })
+      .then(user => res.status(200).json(user));
+    })
     .catch(err => console.log("DB error", err));
 });
 

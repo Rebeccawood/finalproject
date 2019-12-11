@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, Row, Col, Container } from "react-bootstrap";
+import { Button, Form, Row, Col, Container, Toast } from "react-bootstrap";
 import Service from "../../service/auth.service";
 import { withRouter } from "react-router-dom";
 
@@ -10,7 +10,9 @@ class Login extends Component {
     super(props);
     this.service = new Service();
     this.state = {
-      user: { username: "", password: "" }
+      user: { username: "", password: "" },
+      showToast: false,
+      toastText: '',
     };
   }
 
@@ -33,9 +35,11 @@ class Login extends Component {
         this.props.history.push("/profile");
       })
       .catch(err => {
-        console.log({ err });
+        this.handleToastOpen(err.response.data.message);
       });
   };
+  handleToastClose = () => this.setState({ showToast: false, toastText: "" });
+  handleToastOpen = text => this.setState({ showToast: true, toastText: text });
 
   render() {
     return (
@@ -63,7 +67,27 @@ class Login extends Component {
           <Button variant="outline-dark" type="submit">
             Login
           </Button>
+          
         </Form>
+
+ <Toast
+                    onClose={this.handleToastClose}
+                    show={this.state.showToast}
+                    delay={3000}
+                    autohide
+                    style={{
+                        position: 'fixed',
+                        right: '10px',
+                        bottom: '10px',
+                        minWidth: '250px'
+                    }}>
+                    <Toast.Header>
+                        <strong className="mr-auto">Error</strong>
+                        <small>Session manager</small>
+                    </Toast.Header>
+                    <Toast.Body>{this.state.toastText}</Toast.Body>
+                </Toast>
+
       </Container>
     );
   }

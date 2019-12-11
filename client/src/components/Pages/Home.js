@@ -11,7 +11,7 @@ class Home extends Component {
     return (
       <div className="home">
         <img
-          src="https://res.cloudinary.com/darzjo72b/image/upload/v1575843588/faces_cdc5pp.jpg"
+          src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1575995485/FinalProject%20Ironhack/faces_dz5e32.jpg"
           alt="home"
         />
 
@@ -26,7 +26,7 @@ class Home extends Component {
           <Container>
             <Row>
               <Col md={4}>
-                <h4>Swiping is not only for "love"</h4>
+                <h4>Swiping not only for "love"</h4>
                 <p>
                   The best way to learn a language is by speaking it with
                   friends. Through our matching-buddies system, you can choose
@@ -40,7 +40,7 @@ class Home extends Component {
                 <p></p>
               </Col>
               <Col md={4}>
-                <h4>Find a teacher if you want to</h4>
+                <h4>Find a teacher if you want</h4>
                 <p>
                   The best way to learn a language is by speaking it with
                   friends. Through our matching-buddies system, you can choose

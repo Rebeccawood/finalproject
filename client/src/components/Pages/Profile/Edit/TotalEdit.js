@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 
-import Service from "../../../service/profile.service"
+import Service from "../../../../service/auth.service";
 import { withRouter } from "react-router-dom";
 
-import "../../../styelsheets/Profile.css";
+import "../../../../styelsheets/Profile.css"
 
 class TotalEdit extends Component {
   constructor(props) {
@@ -90,6 +90,10 @@ class TotalEdit extends Component {
             Save Changes
           </Button>
         </Form>
+
+        
+
+
         <br></br>
         <Button variant="outline-dark" onClick={this.props.closeModalWindow}>
           Cancel

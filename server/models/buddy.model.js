@@ -3,22 +3,34 @@ const Schema = mongoose.Schema;
 
 const buddySchema = new Schema(
   {
-    learningLanguages: {
-      type: String,
+    languagesSpoken: {
+      type: [String],
       enum: [
-        "English",
         "German",
+        "English",
         "Spanish",
-        "Chinese/Mandarin",
         "French",
-        "Italian",
+        "Portuguese",
         "Russian",
-        "Arabic",
-        "Portuguese"
+        "Italian",
+        "Chinese/Manderin"
       ]
     },
-    Hobbies: String,   
+    learningLanguages: {
+      type: [String],
+      enum: [
+        "German",
+        "English",
+        "Spanish",
+        "French",
+        "Portuguese",
+        "Russian",
+        "Italian",
+        "Chinese/Manderin"
+      ]
     },
+    Hobbies: String
+  },
   {
     timestamps: true
   }

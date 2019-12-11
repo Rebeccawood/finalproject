@@ -4,22 +4,21 @@ const Schema = mongoose.Schema;
 const teacherSchema = new Schema(
   {
     price: Number,
-      languages: {
-      type: String,
+    teachingLanguages: {
+      type: [String],
       enum: [
-        "English",
         "German",
+        "English",
         "Spanish",
-        "Chinese/Mandarin",
         "French",
-        "Italian",
+        "Portuguese",
         "Russian",
-        "Arabic",
-        "Portuguese"
+        "Italian",
+        "Chinese/Manderin"
       ]
     },
     conditions: String,
-    qualifications: String,
+    qualifications: String
   },
   {
     timestamps: true

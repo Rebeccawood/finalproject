@@ -1,47 +1,41 @@
 import React, { Component } from "react";
 import "../../../styelsheets/Profile.css";
-import { Container, Row, Col, Modal, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import TotalEdit from "./TotalEdit";
+import { Container, Row, Col} from "react-bootstrap";
+
+// ---------------------- COMPONENTS -------------------------//
+import ConditionsTeacher from "./ConditionsTeacher";
+import HobbiesPrice from "./HobbiesPrice";
+import Availability from "./Availability";
+import LearnSpeakLanguages from "./LearnSpeakLanguages";
+import SpokenQualifications from "./SpokenQualifications";
+import GeneralInfo from "./GeneralInfo"
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showModalWindow: false
-    };
+    this.state = {};
   }
-
-  // ------------------ MODAL EDIT --------------------//
-  handleShow = () => this.setState({ showModalWindow: true });
-  handleClose = () => this.setState({ showModalWindow: false });
 
   render() {
     return (
       <Container>
         <h1> Hi, {this.props.loggedInUser.username}</h1>
-        <Button variant="outline-dark" onClick={this.handleShow}>
-          Edit Profile
-        </Button>
-        <Modal
-          size="lg"
-          show={this.state.showModalWindow}
-          onHide={this.handleClose}
-        >
-          <Modal.Body>
-            <TotalEdit
-              loggedInUser={this.props.loggedInUser}
+        <Row>
+          <Col md={6}>
+            <GeneralInfo
               setUser={this.props.setUser}
-              className="modal"
-              closeModalWindow={this.handleClose}
+              loggedInUser={this.props.loggedInUser}
             />
-          </Modal.Body>
-        </Modal>
+          </Col>
 
-        <img src={this.props.loggedInUser.imgPath} alt="profile-picture" />
-        {this.props.loggedInUser.teacher && (
-          <p>{this.props.loggedInUser.teacher.price}</p>
-        )}
+          <Col md={6}>
+            <Availability loggedInUser={this.props.loggedInUser} />
+            <LearnSpeakLanguages loggedInUser={this.props.loggedInUser} />
+            <SpokenQualifications loggedInUser={this.props.loggedInUser} />
+            <HobbiesPrice loggedInUser={this.props.loggedInUser} />
+            <ConditionsTeacher loggedInUser={this.props.loggedInUser} />
+          </Col>
+        </Row>
       </Container>
     );
   }

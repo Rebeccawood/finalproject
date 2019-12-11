@@ -35,6 +35,7 @@ class Navigation extends Component {
   // ------------------ Lifecycle ------------------- //
 
   render() {
+    console.log(this.props.loggedInUser, "user being called in navbar");
     const greeting = this.props.loggedInUser
       ? this.props.loggedInUser.username
       : "to SpeakEasy";

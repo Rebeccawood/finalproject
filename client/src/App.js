@@ -8,7 +8,7 @@ import "./styelsheets/App.css";
 //------------- Page Components ----------//
 import Home from "./components/Pages/Home";
 import Profile from "./components/Pages/Profile/Profile";
-import Dashboard from "./components/Pages/Dashboard"
+import Dashboard from "./components/Pages/Dashboard";
 
 //------------- UI Components ----------//
 import Navigation from "./components/UI/Navbar";
@@ -28,10 +28,17 @@ class App extends Component {
   };
 
   fetchUser = () => {
+    console.log(this.state.loggedInUser);
     if (this.state.loggedInUser === null) {
       this.service
         .loggedin()
-        .then(user => this.setState({ loggedInUser: user.data }))
+        .then(user => {
+          console.log(user);
+          console.log(user.data, "the user fetched");
+          this.setState({ loggedInUser: user.data }, () => {
+            console.log("actual end of the setState");
+          });
+        })
         .catch(err => {
           this.setState({ loggedInUser: false });
           console.log({ err });
@@ -42,6 +49,9 @@ class App extends Component {
   // --------------------- RETURN ------------------------ //
   render() {
     this.fetchUser();
+    console.log(this.state.loggedInUser);
+    console.log("past fetch function");
+
     return (
       <>
         <Navigation
@@ -50,7 +60,10 @@ class App extends Component {
         />
 
         <Switch>
+          <Route exact path="/" component={Home} />
+
           <Route
+            exact
             path="/profile"
             render={() =>
               this.state.loggedInUser ? (
@@ -60,11 +73,16 @@ class App extends Component {
               )
             }
           />
-
-          <Route exact path="/" component={Home} />
-          <Dashboard
-            loggedInUser={this.state.loggedInUser}
-            setUser={this.setTheUser}
+          <Route
+            exact
+            path="/dashboard"
+            render={() => (
+              <Dashboard
+                updateTeacher={this.updateTeacher}
+                loggedInUser={this.state.loggedInUser}
+                setUser={this.setTheUser}
+              />
+            )}
           />
         </Switch>
       </>

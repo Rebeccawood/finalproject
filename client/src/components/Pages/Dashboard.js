@@ -3,9 +3,9 @@ import "../../styelsheets/Home.css";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
-import BuddyEdit from "./Profile/BuddyEdit";
-import TeacherEdit from "./Profile/TeacherEdit";
-import TotalEdit from "./Profile/TotalEdit";
+import BuddyEdit from "./Profile/Edit/BuddyEdit"
+import TeacherEdit from "./Profile/Edit/TeacherEdit";
+
 
 class Dashboard extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Dashboard extends Component {
   }
 
   // ------------------ MODAL BUDDY --------------------//
-  handleShowBuddy = () => this.setState({ showModalWindowBuddy: true });
+  handleShowBuddy = () => this.setState({ showModalWindowBuddy: true })
   handleCloseBuddy = () => this.setState({ showModalWindowBuddy: false });
 
   // ------------------ MODAL TEACHER --------------------//
@@ -71,7 +71,7 @@ class Dashboard extends Component {
           onHide={this.handleCloseTeacher}
         >
           <Modal.Body>
-            <TeacherEdit
+            <TeacherEdit 
               loggedInUser={this.props.loggedInUser}
               setUser={this.props.setUser}
               closeModalWindow={this.handleCloseTeacher}
