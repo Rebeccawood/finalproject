@@ -13,7 +13,7 @@ import SearchProfiles from "./components/Pages/Matching/SearchProfiles"
 import MatchProfile from "./components/Pages/Matching/MatchProfile"
 
 //------------- UI Components ----------//
-import Navigation from "./components/UI/Navbar";
+import Navigation from "./components/UI/NavbarHome";
 
 // ----------------------------------------------------------------------------- //
 
@@ -31,15 +31,12 @@ class App extends Component {
   };
 
   fetchUser = () => {
-    console.log(this.state.loggedInUser);
+   
     if (this.state.loggedInUser === null) {
       this.service
         .loggedin()
         .then(user => {
-          console.log(user);
-          console.log(user.data, "the user fetched");
           this.setState({ loggedInUser: user.data }, () => {
-            console.log("actual end of the setState");
           });
         })
         .catch(err => {
@@ -52,9 +49,7 @@ class App extends Component {
   // --------------------- RETURN ------------------------ //
   render() {
     this.fetchUser();
-    console.log(this.state.loggedInUser);
-    console.log("past fetch function");
-
+    
     return (
       <>
         <Navigation
@@ -70,7 +65,7 @@ class App extends Component {
             path="/profile"
             render={() =>
               this.state.loggedInUser ? (
-                <Profile loggedInUser={this.state.loggedInUser} />
+                <Profile setUser={this.setUser}loggedInUser={this.state.loggedInUser} />
               ) : (
                 <Redirect to="/" />
               )

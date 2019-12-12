@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Button, Form } from "react-bootstrap";
 
 import Service from "../../../../service/auth.service";
 import { withRouter } from "react-router-dom";
 
+// ------------- Style ------------------------- //
+import { Button, Form } from "react-bootstrap";
 import "../../../../styelsheets/Profile.css";
 import "../../../../styelsheets/Dashboard.css";
 
@@ -236,36 +237,3 @@ class TeacherEdit extends Component {
 }
 
 export default withRouter(TeacherEdit);
-
-// handleSubmit = e => {
-//   e.preventDefault();
-//   const {
-//     bio,
-//     languages,
-//     price,
-//     qualifications,
-//     conditions,
-//     age,
-//     gender,
-//   } = this.state;
-//   this.service
-//     .newTeacher(bio, languages, price, languages, price, qualifications, age, conditions, gender)
-//     .then(theLoggedUser => {
-//       this.setState({
-//         bio: "",
-//         languages: [],
-//         price: "",
-//         qualifications: "",
-//         age: 0,
-//         conditions: "",
-//         gender: ""
-
-//       });
-//       this.props.setUser(theLoggedUser.data);
-//       this.props.closeModalWindow();
-//       this.props.history.push("/profile");
-//     })
-//     .catch(err => {
-//       console.log({ err });
-//     });
-// };

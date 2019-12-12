@@ -5,10 +5,13 @@ import { Link } from 'react-router-dom'
 
 // ---------------------- COMPONENTS -------------------------//
 import ConditionsTeacher from "../Profile/ConditionsTeacher";
-import HobbiesPrice from "../Profile/HobbiesPrice";
+import Hobbies from "../Profile/Hobbies";
+import Price from "../Profile/Price";
 import Availability from "../Profile/Availability"
-import LearnTeachLanguages from "../Profile/LearnTeachLanguages.js";
-import SpokenQualifications from "../Profile/SpokenQualifications";
+import LearningLanguages from "../Profile/LearningLanguages.js";
+import TeachingLanguages from "../Profile/TeachingLanguages.js";
+import Qualifications from "../Profile/Qualifications";
+import SpokenLanguages from "../Profile/SpokenLanguages";
 import GeneralInfo from "../Profile/GeneralInfo"
 
 
@@ -20,7 +23,6 @@ class MatchProfile extends Component {
         this.service = new Service()
     }
 
-
     componentDidMount = () => {
         const userId = this.props.match.params.id
         this.service.getOneUser(userId)
@@ -28,30 +30,39 @@ class MatchProfile extends Component {
             .catch(err => console.log(err))
     }
 
-
-
     render() {
         return (
+            <>
                     <Container>
-                        <h1> Hi, {this.state.user.username}</h1>
+                        <h1>{this.state.user.username}</h1>
                         <Row>
                             <Col md={6}>
                                 <GeneralInfo
-                                    setUser={this.state.user.setUser}
-                                    loggedInUser={this.state.user.loggedInUser}
+                                    setUser={this.state.user}
+                                    user={this.props.user}
                                 />
                             </Col>
 
-                            <Col md={6}>
-                        <Availability user={this.state.user} loggedInUser={this.props.loggedInUser}/>
-                        <LearnTeachLanguages user={this.state.user} loggedInUser={this.props.loggedInUser} />
-                                <SpokenQualifications user={this.state.user} loggedInUser={this.props.loggedInUser} />
-                        <HobbiesPrice user={this.state.user} loggedInUser={this.props.loggedInUser}/>
-                        <ConditionsTeacher loggedInUser={this.state.user} loggedInUser={this.props.loggedInUser}/>
-                            </Col>
+                        <Col md={6}>
+
+                            <Availability user={this.props.user} />
+
+                            {this.user.buddy ?
+                                (<LearningLanguages user={this.props.user} />) : (<TeachingLanguages user={this.props.user} />)}
+
+                            {this.user.buddy ?
+                                (<SpokenLanguages user={this.props.user} />) : (<Qualifications user={this.props.user} />)}
+
+                            {this.user.buddy ?
+                                (<Hobbies user={this.props.user} />) :
+                                (<Price user={this.props.user} />)}
+
+                            {this.user.teacher && <ConditionsTeacher user={this.props.user} />}
+
+                        </Col>
                         </Row>
                     </Container>
-
+</>
 
         )}}
 export default MatchProfile

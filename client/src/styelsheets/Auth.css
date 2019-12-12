@@ -9,10 +9,12 @@ padding: 0
 
 .navbar a {
     color: inherit;
-    font-size: 18px;
-    
+    font-size: 18px;  
 }
-
+.nav-bg {
+background: white;
+color: black;
+}
 .modal-body {
     color:rgb(52,58,64);
     border-radius: 8px;

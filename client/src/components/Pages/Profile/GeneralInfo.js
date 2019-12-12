@@ -10,7 +10,7 @@ class GeneralInfo extends Component {
     return (
       <section>
         <img
-          src={this.props.loggedInUser.imgPath}
+          src={this.props.user.imgPath}
           className="profile-img"
           alt="profile-picture"
         />
@@ -28,11 +28,11 @@ class GeneralInfo extends Component {
         />
         <hr></hr>
         <h5>About me:</h5>
-        <p>{this.props.loggedInUser.bio}</p>
+        <p>{this.props.user.bio}</p>
         <h5>Age:</h5>
-        <p>{this.props.loggedInUser.age}</p>
+        <p>{this.props.user.age}</p>
         <h5>Gender:</h5>
-        <p>{this.props.loggedInUser.gender}</p>
+        <p>{this.props.user.gender}</p>
 
         {/* <h5>Location:</h5>
             <p>{this.props.loggedInUser.Location}</p> */}

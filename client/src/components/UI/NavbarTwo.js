@@ -13,7 +13,9 @@ class Navigation extends Component {
     this.service = new Service();
     this.state = {
       showModalWindowLogin: false,
-      showModalWindowSignup: false
+      showModalWindowSignup: false,
+      scrollBackground: "",
+    
     };
   }
   // ------------------ MODAL LOGIN --------------------//
@@ -32,15 +34,16 @@ class Navigation extends Component {
       .catch(err => console.log(err));
   };
 
-  // ------------------ Lifecycle ------------------- //
-
   render() {
+
+
     console.log(this.props.loggedInUser, "user being called in navbar");
     const greeting = this.props.loggedInUser
       ? this.props.loggedInUser.username
       : "to SpeakEasy";
+
     return this.props.loggedInUser ? (
-      <Navbar bg="dark" variant="dark" expand="md">
+      <Navbar variant="dark" scrolling expand="md" fixed="top" bg="dark">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav className="mr-auto navbar">
@@ -64,7 +67,7 @@ class Navigation extends Component {
       </Navbar>
     ) : (
       <>
-        <Navbar bg="dark" variant="dark" expand="md">
+          <Navbar variant="dark" scrolling expand="md" fixed="top" bg="dark">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse>
             <Nav className="mr-auto navbar">
