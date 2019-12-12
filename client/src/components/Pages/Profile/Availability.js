@@ -13,6 +13,7 @@ render(){
    <>
      <h5>Available Days:</h5>
      <p>
+     {console.log(this.props.user)}
        {this.props.user.availabilityDays.map((day, idx) => (
          <List key={idx} list={day} />
        ))}

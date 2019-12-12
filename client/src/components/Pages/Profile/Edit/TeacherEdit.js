@@ -17,10 +17,10 @@ class TeacherEdit extends Component {
       teachingLanguages: [],
       availabilityHours: [],
       availabilityDays: [],
-      price: 0,
+      price: 10,
       qualifications: "",
       conditions: "",
-      age: 0,
+      age: 18,
       gender: ""
     };
   }
@@ -35,10 +35,10 @@ class TeacherEdit extends Component {
           teachingLanguages: [],
           availabilityHours: [],
           availabilityDays: [],
-          price: 0,
+          price: 10,
           qualifications: "",
           conditions: "",
-          age: 0,
+          age: 18,
           gender: ""
         });
       })
@@ -211,15 +211,6 @@ class TeacherEdit extends Component {
               name="conditions"
               onChange={this.handleInputChange}
               value={this.state.conditions}
-            />
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label>Profile Picture</Form.Label>
-            <Form.Control
-              name="imageUrl"
-              type="file"
-              onChange={this.handleFileUpload}
             />
           </Form.Group>
 

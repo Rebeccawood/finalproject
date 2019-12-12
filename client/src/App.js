@@ -86,10 +86,11 @@ class App extends Component {
           <Route
             exact
             path="/profile/:id"
-            render={() => (
+            render={(match) => (
               <MatchProfile
                 loggedInUser={this.state.loggedInUser}
                 setUser={this.setTheUser}
+                {...match}
               />
             )}
           />

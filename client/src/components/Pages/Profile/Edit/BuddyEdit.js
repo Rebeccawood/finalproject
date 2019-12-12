@@ -32,7 +32,7 @@ class BuddyEdit extends Component {
           learningLanguages: [],
           availabilityHours: [],
           availabilityDays: [],
-          age: 0,
+          age: 18,
           gender: ""
         });
         this.props.closeModalWindow();
@@ -188,6 +188,7 @@ class BuddyEdit extends Component {
               onChange={this.handleInputChange}
               value={this.state.gender}
             >
+              <option>...choose</option>
               <option>Female</option>
               <option>Male</option>
               <option>Other</option>
@@ -201,15 +202,6 @@ class BuddyEdit extends Component {
               name="hobbies"
               onChange={this.handleInputChange}
               value={this.state.hobbies}
-            />
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label>Profile Picture</Form.Label>
-            <Form.Control
-              name="imageUrl"
-              type="file"
-              onChange={this.handleFileUpload}
             />
           </Form.Group>
 

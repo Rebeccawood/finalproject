@@ -30,7 +30,7 @@ class ButtonsEdit extends Component {
   render() {
     return (
       <>
-        {this.props.loggedInUser.buddy ? (
+        {this.props.user.buddy ? (
           <Button variant="outline-dark" onClick={this.handleShowBuddy}>
             Edit Buddy Profile
           </Button>

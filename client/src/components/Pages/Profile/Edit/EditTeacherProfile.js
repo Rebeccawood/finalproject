@@ -256,15 +256,6 @@ class EditTeacherProfile extends Component {
             />
           </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Profile Picture</Form.Label>
-            <Form.Control
-              name="imageUrl"
-              type="file"
-              onChange={this.handleFileUpload}
-            />
-          </Form.Group>
-
           <Button variant="outline-dark" type="submit" disabled={this.state.disabledButton}>{this.state.buttonText}</Button>
         </Form>
         <br></br>

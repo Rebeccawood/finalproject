@@ -27,7 +27,6 @@ class Profile extends Component {
           <Row>
             <Col md={6}>
               <GeneralInfo
-                setUser={this.props.setUser}
                 user={this.props.loggedInUser}
               />
             </Col>

@@ -3,8 +3,10 @@ const router = express.Router();
 const User = require("../models/user.model");
 
 router.get("/:id", (req, res) => {
-  const userId = req.params.id
+  const userId = req.params.id;
   User.findById(userId)
+    .populate("teacher")
+    .populate("buddy")
     .then(theUser => res.json(theUser))
     .catch(err => console.log("DB error", err));
 });

@@ -164,14 +164,6 @@ class EditBuddyProile extends Component {
             />
           </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Profile Picture</Form.Label>
-            <Form.Control
-              name="imageUrl"
-              type="file"
-              onChange={this.handleFileUpload}
-            />
-          </Form.Group>
 
           <Button variant="outline-dark" type="submit">
             Save Changes

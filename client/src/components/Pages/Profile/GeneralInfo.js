@@ -16,16 +16,15 @@ class GeneralInfo extends Component {
         />
         
 
-        {this.props.loggedInUser.buddy ? (
+        {this.props.user.buddy ? (
           <p>This is a buddy-profile</p>
         ) : (
           <p>This is a teacher-profile</p>
         )}
 
-        <ButtonsEdit
-          setUser={this.props.setUser}
-          loggedInUser={this.props.loggedInUser}
-        />
+        {/* <ButtonsEdit
+          user={this.props.loggedInUser}
+        /> */}
         <hr></hr>
         <h5>About me:</h5>
         <p>{this.props.user.bio}</p>
