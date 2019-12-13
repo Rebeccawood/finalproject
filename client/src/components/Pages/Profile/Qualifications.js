@@ -8,11 +8,11 @@ class Qualifications extends Component {
   }
   render(){
  return (
-   <>
+  <>
        <h5>Qualifications:</h5>
        <p>{this.props.user.teacher.qualifications}</p>
      
-   </>
+  </>
  )}}
 
  export default Qualifications

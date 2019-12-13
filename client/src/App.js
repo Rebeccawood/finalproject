@@ -6,14 +6,14 @@ import Service from "./service/auth.service";
 import "./styelsheets/App.css";
 
 //------------- Page Components ----------//
-import Home from "./components/Pages/Home";
-import Profile from "./components/Pages/Profile/Profile";
-import Dashboard from "./components/Pages/Dashboard";
-import SearchProfiles from "./components/Pages/Matching/SearchProfiles"
-import MatchProfile from "./components/Pages/Matching/MatchProfile"
+import Home from "./components/pages/Home";
+import Profile from "./components/pages/profile/Profile";
+import Dashboard from "./components/pages/Dashboard";
+import SearchProfiles from "./components/pages/matching/SearchProfiles";
+import MatchProfile from "./components/pages/matching/MatchProfile";
 
 //------------- UI Components ----------//
-import Navigation from "./components/UI/NavbarHome";
+import Navigation from "./components/ui/NavbarHome";
 
 // ----------------------------------------------------------------------------- //
 
@@ -26,18 +26,16 @@ class App extends Component {
   // --------------------- USER CONFIG ------------------------ //
   setTheUser = user => {
     this.setState({ loggedInUser: user });
-    
+
     console.log("the logged in user is:", this.state.loggedInUser);
   };
 
   fetchUser = () => {
-   
     if (this.state.loggedInUser === null) {
       this.service
         .loggedin()
         .then(user => {
-          this.setState({ loggedInUser: user.data }, () => {
-          });
+          this.setState({ loggedInUser: user.data }, () => {});
         })
         .catch(err => {
           this.setState({ loggedInUser: false });
@@ -46,10 +44,9 @@ class App extends Component {
     }
   };
 
-  // --------------------- RETURN ------------------------ //
   render() {
     this.fetchUser();
-    
+
     return (
       <>
         <Navigation
@@ -65,7 +62,10 @@ class App extends Component {
             path="/profile"
             render={() =>
               this.state.loggedInUser ? (
-                <Profile setUser={this.setUser}loggedInUser={this.state.loggedInUser} />
+                <Profile
+                  setUser={this.setTheUser}
+                  loggedInUser={this.state.loggedInUser}
+                />
               ) : (
                 <Redirect to="/" />
               )
@@ -76,7 +76,6 @@ class App extends Component {
             path="/dashboard"
             render={() => (
               <Dashboard
-                
                 loggedInUser={this.state.loggedInUser}
                 setUser={this.setTheUser}
               />
@@ -86,7 +85,7 @@ class App extends Component {
           <Route
             exact
             path="/profile/:id"
-            render={(match) => (
+            render={match => (
               <MatchProfile
                 loggedInUser={this.state.loggedInUser}
                 setUser={this.setTheUser}
@@ -95,7 +94,6 @@ class App extends Component {
             )}
           />
 
-          
           <Route
             exact
             path="/search"

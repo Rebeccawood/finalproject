@@ -4,15 +4,17 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // ---------------------- COMPONENTS -------------------------//
-import ConditionsTeacher from "../Profile/ConditionsTeacher";
-import Hobbies from "../Profile/Hobbies";
-import Price from "../Profile/Price";
-import Availability from "../Profile/Availability";
-import LearningLanguages from "../Profile/LearningLanguages.js";
-import TeachingLanguages from "../Profile/TeachingLanguages.js";
-import Qualifications from "../Profile/Qualifications";
-import SpokenLanguages from "../Profile/SpokenLanguages";
-import GeneralInfo from "../Profile/GeneralInfo";
+import ConditionsTeacher from "../profile/ConditionsTeacher";
+import Interests from "../profile/Interests";
+import Price from "../profile/Price";
+import Availability from "../profile/Availability";
+import LearningLanguages from "../profile/LearningLanguages.js";
+import TeachingLanguages from "../profile/TeachingLanguages.js";
+import Qualifications from "../profile/Qualifications";
+import SpokenLanguages from "../profile/SpokenLanguages";
+import GeneralInfo from "../profile/GeneralInfo";
+import AboutMe from "../profile/AboutMe";
+import BuddyPreferences from "../profile/preferences/BuddyPreferences"
 
 class MatchProfile extends Component {
   constructor(props) {
@@ -23,60 +25,69 @@ class MatchProfile extends Component {
 
   componentDidMount = () => {
     const userId = this.props.match.params.id;
-    this.service
-      .getOneProfile(userId)
-      .then(theUser => {
-        console.log(theUser, "banana");
-        this.setState({ user: theUser.data }, () =>
-          console.log(this.state.user, "candy")
-        );
-      })
+    this.service.getOneProfile(userId)
+      .then(theUser => this.setState({ user: theUser.data }))
       //   .then(console.log(this.state.user))
       .catch(err => console.log(err));
-  };
+    };
 
   render() {
-    console.log(this.props);
-    console.log(this.state.user);
+   
     return this.state.user ? (
       <>
-        <Container>
-          <h1>{this.state.user.username}</h1>
+        <Container className="justify-content-around">
           <Row>
-            <Col md={6}>
-              <GeneralInfo user={this.state.user} />
+            <h1> {this.state.user.username}</h1>
+
+            <Col md>
+              <section>
+                <AboutMe user={this.state.user} loggedInUser={this.props.loggedInUser} />
+                />
+              </section>
             </Col>
 
-            <Col md={6}>
-              <Availability user={this.state.user} />
+            <Col md>
+              <section>
+                <GeneralInfo
+                  setUser={this.props.setUser}
+                  user={this.state.user}
+                />
+                {this.state.user.teacher ? (
+                  <Price user={this.state.user} />
+                ) : (
+                  <Interests user={this.state.user} />
+                )}
+              </section>
+            </Col>
 
-              {this.state.user.buddy ? (
-                <LearningLanguages user={this.state.user} />
-              ) : (
-                <TeachingLanguages user={this.state.user} />
-              )}
+            <Col md>
+              <section>
+                {this.state.user.buddy ? (
+                  <LearningLanguages user={this.state.user} />
+                ) : (
+                  <TeachingLanguages user={this.state.user} />
+                )}
+                {this.state.user.teacher ? (
+                  <Qualifications user={this.state.user} />
+                ) : (
+                  <SpokenLanguages user={this.state.user} />
+                )}
 
-              {this.state.user.buddy ? (
-                <SpokenLanguages user={this.state.user} />
-              ) : (
-                <Qualifications user={this.state.user} />
-              )}
+                <Availability user={this.state.user} />
 
-              {this.state.user.buddy ? (
-                <Hobbies user={this.state.user} />
-              ) : (
-                <Price user={this.state.user} />
-              )}
-
-              {this.state.user.teacher && (
+                
+              {/* {this.state.user.teacher ? (
                 <ConditionsTeacher user={this.state.user} />
-              )}
+              ) : (
+                <BuddyPreferences user={this.state.user}  />
+              )} */}
+              </section>
             </Col>
           </Row>
         </Container>
       </>
     ) : (
-      "Retrieving user..."
+        <h1>Retrieving user...</h1>
     );
   }
 }

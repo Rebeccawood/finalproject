@@ -15,7 +15,7 @@ class PhotoEdit extends Component {
   handleFileUpload = e => {
     this.setState({ disabledButton: true, buttonText: "Uploading Image..." });
     const uploadData = new FormData();
-    uploadData.append("imageUrl", e.target.files[0]);
+    uploadData.append("imgPath", e.target.files[0]);
     this.filesService
       .handleUpload(uploadData)
       .then(response => {
@@ -24,7 +24,9 @@ class PhotoEdit extends Component {
           disabledButton: false,
           buttonText: "Save Changes"
         });
+        this.props.history.push("/profile");
       })
+      
       .catch(err => console.log(err));
   };
   render() {
@@ -33,7 +35,7 @@ class PhotoEdit extends Component {
         <Form.Group>
           <Form.Label>Profile Picture</Form.Label>
           <Form.Control
-            name="imageUrl"
+            name="imgPath"
             type="file"
             onChange={this.handleFileUpload}
           />

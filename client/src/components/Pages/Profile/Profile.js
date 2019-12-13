@@ -3,15 +3,17 @@ import "../../../styelsheets/Profile.css";
 import { Container, Row, Col } from "react-bootstrap";
 
 // ---------------------- COMPONENTS -------------------------//
-import ConditionsTeacher from "../Profile/ConditionsTeacher";
-import Hobbies from "../Profile/Hobbies";
-import Price from "../Profile/Price";
-import Availability from "../Profile/Availability";
-import LearningLanguages from "../Profile/LearningLanguages.js";
-import TeachingLanguages from "../Profile/TeachingLanguages.js";
-import Qualifications from "../Profile/Qualifications";
-import SpokenLanguages from "../Profile/SpokenLanguages";
-import GeneralInfo from "../Profile/GeneralInfo";
+import ConditionsTeacher from "../profile/ConditionsTeacher";
+import Interests from "./Interests";
+import Price from "../profile/Price";
+import Availability from "../profile/Availability";
+import LearningLanguages from "../profile/LearningLanguages.js";
+import TeachingLanguages from "../profile/TeachingLanguages.js";
+import Qualifications from "../profile/Qualifications";
+import SpokenLanguages from "../profile/SpokenLanguages";
+import GeneralInfo from "../profile/GeneralInfo";
+import AboutMe from "../profile/AboutMe";
+import BuddyPreferences from "../profile/preferences/BuddyPreferences";
 
 class Profile extends Component {
   constructor(props) {
@@ -22,39 +24,50 @@ class Profile extends Component {
   render() {
     return (
       <>
-        <Container>
-          <h1> Hi, {this.props.loggedInUser.username}</h1>
+        <Container className="justify-content-around">
           <Row>
-            <Col md={6}>
-              <GeneralInfo
-                user={this.props.loggedInUser}
-              />
+            <h1> Hi, {this.props.loggedInUser.username}</h1>
+
+            <Col md>
+              <section>
+                <AboutMe setUser={this.props.setUser} user={this.props.loggedInUser} loggedInUser={this.props.loggedInUser} />
+              </section>
             </Col>
 
-            <Col md={6}>
-              <Availability user={this.props.loggedInUser} />
+            <Col md>
+              <section>
+                <GeneralInfo
+                  setUser={this.props.setUser}
+                  user={this.props.loggedInUser}
+                />
+                {this.props.loggedInUser.teacher ? (
+                  <Price user={this.props.loggedInUser} />
+                ) : (
+                  <Interests user={this.props.loggedInUser} />
+                )}
+                {this.props.loggedInUser.teacher ? (
+                  <ConditionsTeacher user={this.props.loggedInUser} />
+                ) : (
+                  <BuddyPreferences user={this.props.loggedInUser} />
+                )}
+              </section>
+            </Col>
 
-              {this.props.loggedInUser.buddy ? (
-                <LearningLanguages user={this.props.loggedInUser} />
-              ) : (
-                <TeachingLanguages user={this.props.loggedInUser} />
-              )}
+            <Col md>
+              <section>
+                {this.props.loggedInUser.buddy ? (
+                  <LearningLanguages user={this.props.loggedInUser} />
+                ) : (
+                  <TeachingLanguages user={this.props.loggedInUser} />
+                )}
+                {this.props.loggedInUser.teacher ? (
+                  <Qualifications user={this.props.loggedInUser} />
+                ) : (
+                  <SpokenLanguages user={this.props.loggedInUser} />
+                )}
 
-              {this.props.loggedInUser.buddy ? (
-                <SpokenLanguages user={this.props.loggedInUser} />
-              ) : (
-                <Qualifications user={this.props.loggedInUser} />
-              )}
-
-              {this.props.loggedInUser.buddy ? (
-                <Hobbies user={this.props.loggedInUser} />
-              ) : (
-                <Price user={this.props.loggedInUser} />
-              )}
-
-              {this.props.loggedInUser.teacher && (
-                <ConditionsTeacher user={this.props.loggedInUser} />
-              )}
+                <Availability user={this.props.loggedInUser} />
+              </section>
             </Col>
           </Row>
         </Container>

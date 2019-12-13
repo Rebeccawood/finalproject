@@ -36,7 +36,7 @@ const userSchema = new Schema(
     //   "20:00 - 21:00"
     // ]
 
-    location: { type: { type: String }, coordinates: [Number] }
+    city: String,
   },
   {
     timestamps: true

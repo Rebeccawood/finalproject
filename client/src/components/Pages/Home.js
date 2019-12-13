@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "../../styelsheets/Home.css";
 import { Container, Row, Col } from "react-bootstrap";
 
-
 class Home extends Component {
   constructor() {
     super();
@@ -11,7 +10,6 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        
         <img
           src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1575995485/FinalProject%20Ironhack/faces_dz5e32.jpg"
           alt="home"

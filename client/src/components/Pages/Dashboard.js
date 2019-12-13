@@ -3,8 +3,8 @@ import "../../styelsheets/Home.css";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
-import BuddyEdit from "./Profile/Edit/BuddyEdit"
-import TeacherEdit from "./Profile/Edit/TeacherEdit";
+import BuddyEdit from "./profile/edit/BuddyEdit"
+import TeacherEdit from "./profile/edit/TeacherEdit";
 
 
 class Dashboard extends Component {

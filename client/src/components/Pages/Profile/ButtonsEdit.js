@@ -1,8 +1,12 @@
 import React, { Component } from "react";
-import {  Modal, Button } from "react-bootstrap";
-import EditBuddyProfile from "./Edit/EditBuddyProfile.js";
-import EditTeacherProfile from "./Edit/EditTeacherProfile.js";
-import PhotoEdit from "./Edit/PhotoEdit"
+import { Modal, Button } from "react-bootstrap";
+
+// ----------------- COMPONENTS ---------------//
+import EditBuddyProfile from "./edit/EditBuddyProfile.js";
+import EditTeacherProfile from "./edit/EditTeacherProfile.js";
+import PhotoEdit from "./edit/PhotoEdit";
+import EditBuddyPreferences from "./preferences/EditBuddyPreferences";
+
 class ButtonsEdit extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +14,7 @@ class ButtonsEdit extends Component {
       showModalWindowBuddy: false,
       showModalWindowTeacher: false,
       showModalWindowImg: false,
+      showModalWindowPreferences: false
     };
   }
 
@@ -24,25 +29,39 @@ class ButtonsEdit extends Component {
   handleShowImg = () => this.setState({ showModalWindowImg: true });
   handleCloseImg = () => this.setState({ showModalWindowImg: false });
 
+  // ------------------ MODAL preferences -------------//
+  handleShowPreferences = () =>
+    this.setState({ showModalWindowPreferences: true });
+  handleClosePreferences = () =>
+    this.setState({ showModalWindowPreferences: false });
 
   //------------------------------------------------------//
 
   render() {
     return (
       <>
-        {this.props.user.buddy ? (
-          <Button variant="outline-dark" onClick={this.handleShowBuddy}>
-            Edit Buddy Profile
-          </Button>
+      
+       {this.props.user.buddy ? (
+          <>
+            <Button variant="outline-dark" onClick={this.handleShowBuddy}>
+              Edit Buddy Profile
+            </Button>
+            <br></br>
+            <Button variant="outline-dark" onClick={this.handleShowPreferences}>
+              Edit Search Preferences
+            </Button>
+          </>
         ) : (
           <Button variant="outline-dark" onClick={this.handleShowTeacher}>
             Edit Teacher Profile
           </Button>
         )}
+
        <br></br>
         <Button variant="outline-dark" onClick={this.handleShowImg}>
           Change Picture
         </Button>
+      
 
         <Modal
           size="lg"
@@ -51,7 +70,7 @@ class ButtonsEdit extends Component {
         >
           <Modal.Body>
             <EditBuddyProfile
-              loggedInUser={this.props.loggedInUser}
+              user={this.props.user}
               setUser={this.props.setUser}
               closeModalWindow={this.handleCloseBuddy}
             />
@@ -65,23 +84,37 @@ class ButtonsEdit extends Component {
         >
           <Modal.Body>
             <EditTeacherProfile
-              loggedInUser={this.props.loggedInUser}
+              user={this.props.user}
               setUser={this.props.setUser}
               closeModalWindow={this.handleCloseTeacher}
             />
           </Modal.Body>
         </Modal>
 
-          <Modal
+        <Modal
           size="lg"
           show={this.state.showModalWindowImg}
           onHide={this.handleCloseImg}
         >
           <Modal.Body>
             <PhotoEdit
-              loggedInUser={this.props.loggedInUser}
+              user={this.props.user}
               setUser={this.props.setUser}
               closeModalWindow={this.handleCloseImg}
+            />
+          </Modal.Body>
+        </Modal>
+
+        <Modal
+          size="lg"
+          show={this.state.showModalWindowPreferences}
+          onHide={this.handleClosePreferences}
+        >
+          <Modal.Body>
+            <EditBuddyPreferences
+              user={this.props.user}
+              setUser={this.props.setUser}
+              closeModalWindow={this.handleClosePreferences}
             />
           </Modal.Body>
         </Modal>

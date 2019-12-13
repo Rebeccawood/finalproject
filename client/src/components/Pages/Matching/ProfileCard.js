@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Col from "react-bootstrap/Col";
-import LearnTeachLanguages from "../Profile/LearningLanguages.js";
+import LearnTeachLanguages from "../profile/LearningLanguages.js";
 import { Link } from "react-router-dom";
 import "../../../styelsheets/Matches.css";
 

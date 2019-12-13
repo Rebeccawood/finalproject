@@ -8,13 +8,13 @@ class TeachingLanguages extends Component {
   }
 
   render() {
-    console.log(this.props, "pizza");
+    
     return (
       <>
         <h5>Teaching languages:</h5>
         <ul>
           {this.props.user.teacher.teachingLanguages.map((language, idx) => {
-            console.log(language, idx);
+            
             return <List key={idx} list={language} />;
           })}
         </ul>

@@ -4,47 +4,68 @@ import { Button, Form } from "react-bootstrap";
 import Service from "../../../../service/auth.service";
 import { withRouter } from "react-router-dom";
 
-import "../../../../styelsheets/Profile.css";
+// import "../../../../styelsheets/Profile.css";
 
 class BuddyEdit extends Component {
   constructor(props) {
     super(props);
-    this.Service = new Service();
+    this.service = new Service();
     this.state = {
       bio: "",
       languagesSpoken: [],
       learningLanguages: [],
       availabilityHours: [],
       availabilityDays: [],
-      age: 0,
-      gender: ""
+      interests: [],
+      age: 18,
+      gender: "",
+      message: "",
+      city: ""
     };
   }
-
   handleSubmit = e => {
     e.preventDefault();
-    this.Service.newBuddy(this.state)
-      .then(newBuddy => {
-        this.props.setUser(newBuddy.data);
-        this.setState({
-          bio: "",
-          languagesSpoken: [],
-          learningLanguages: [],
-          availabilityHours: [],
-          availabilityDays: [],
-          age: 18,
-          gender: ""
-        });
-        this.props.closeModalWindow();
-        this.props.history.push("/profile");
-      })
-      .catch(err => console.log(err));
+    if (
+      !!this.state.bio &&
+      // this.state.languagesSpoken.length &&
+      // this.state.Learninglanguages.length &&
+      // this.state.availabilityHours.length &&
+      // this.state.availabilityDays.length &&
+      // this.state.interests.length &&
+      // this.state.age &&
+      this.state.gender &&
+      this.state.city
+    ) {
+      this.service
+        .newBuddy(this.state)
+        .then(newBuddy => {
+          this.props.setUser(newBuddy.data);
+          this.setState({
+            bio: "",
+            languagesSpoken: [],
+            learningLanguages: [],
+            availabilityHours: [],
+            availabilityDays: [],
+            interests: [],
+            age: 18,
+            gender: "",
+            city: ""
+          });
+          this.props.closeModalWindow();
+          this.props.history.push("/profile");
+        })
+        .catch(err => console.log(err));
+    } else {
+      this.setState({ message: "Please fill out the form" });
+    }
   };
 
   handleInputChange = e => {
     const name = e.target.name;
     if (
       name == "languagesSpoken" ||
+      name == "learningLanguages" ||
+      name == "interests" ||
       name == "availabilityHours" ||
       name == "availabilityDays"
     ) {
@@ -65,6 +86,7 @@ class BuddyEdit extends Component {
     return (
       <>
         <Form onSubmit={this.handleSubmit}>
+          <p>{this.state.message}</p>
           <h1>Buddy Profile</h1>
 
           <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -77,6 +99,29 @@ class BuddyEdit extends Component {
               onChange={this.handleInputChange}
               value={this.state.bio}
             />
+          </Form.Group>
+
+          <Form.Group controlId="exampleForm.ControlSelect2">
+            <Form.Label>My Interests(you can pick more than one):</Form.Label>
+            <Form.Control
+              as="select"
+              multiple
+              name="interests"
+              onChange={this.handleInputChange}
+              value={this.state.interests}
+            >
+              <option>Literature</option>
+              <option>Art & Design</option>
+              <option>Sports</option>
+              <option>Business</option>
+              <option>Music</option>
+              <option>Traveling</option>
+              <option>Video Games</option>
+              <option>Blogging</option>
+              <option>Yoga</option>
+              <option>Movies</option>
+              <option>Cooking</option>
+            </Form.Control>
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlSelect2">
@@ -196,12 +241,12 @@ class BuddyEdit extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Hobbies</Form.Label>
+            <Form.Label>Your City</Form.Label>
             <Form.Control
               type="text"
-              name="hobbies"
+              name="city"
               onChange={this.handleInputChange}
-              value={this.state.hobbies}
+              value={this.state.city}
             />
           </Form.Group>
 
@@ -217,5 +262,4 @@ class BuddyEdit extends Component {
     );
   }
 }
-
 export default withRouter(BuddyEdit);

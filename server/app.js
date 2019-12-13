@@ -13,8 +13,8 @@ require("./configs/session.config")(app);
 
 app.use("/", require("./routes/index.routes"));
 app.use("/auth", require("./routes/auth.routes"));
-app.use("/profile", require("./routes/profile.routes"));
-app.use("/files", require("./routes/files.routes"));
-app.use("/matches", require("./routes/matches.routes"));
+app.use("/api/profile", require("./routes/profile.routes"));
+app.use("/api/files", require("./routes/files.routes"));
+app.use("/api/matches", require("./routes/matches.routes"));
 
 module.exports = app;

@@ -28,7 +28,8 @@ class SearchProfiles extends Component {
   };
 
   render() {
-    return (
+    return this.state.user ? (
+      
       <section>
         <Container>
           <h1>All profiles that match your preferences</h1>
@@ -38,8 +39,8 @@ class SearchProfiles extends Component {
             ))}
           </Row>
         </Container>
-      </section>
-    );
+    </section> ) : (<h1>We are looking for your perfect language buddy, tailored to your preferences!!</h1>)
+    ;
   }
 }
 export default SearchProfiles;

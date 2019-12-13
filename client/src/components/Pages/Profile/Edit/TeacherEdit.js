@@ -21,7 +21,8 @@ class TeacherEdit extends Component {
       qualifications: "",
       conditions: "",
       age: 18,
-      gender: ""
+      gender: "",
+      city: ""
     };
   }
 
@@ -39,7 +40,8 @@ class TeacherEdit extends Component {
           qualifications: "",
           conditions: "",
           age: 18,
-          gender: ""
+          gender: "",
+          city: ""
         });
       })
       .then(() => {
@@ -211,6 +213,16 @@ class TeacherEdit extends Component {
               name="conditions"
               onChange={this.handleInputChange}
               value={this.state.conditions}
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Your City</Form.Label>
+            <Form.Control
+              type="text"
+              name="city"
+              onChange={this.handleInputChange}
+              value={this.state.city}
             />
           </Form.Group>
 

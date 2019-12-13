@@ -16,8 +16,10 @@ class EditBuddyProile extends Component {
       learningLanguages: [],
       availabilityHours: [],
       availabilityDays: [],
-      age: 0,
-      gender: ""
+      interests: [],
+      age: 18,
+      gender: "",
+      city: ""
     };
   }
 
@@ -32,8 +34,10 @@ class EditBuddyProile extends Component {
           learningLanguages: [],
           availabilityHours: [],
           availabilityDays: [],
-          age: 0,
-          gender: ""
+          interests: [],
+          age: 18,
+          gender: "",
+          city: ""
         });
         this.props.closeModalWindow();
         this.props.history.push("/profile");
@@ -45,6 +49,8 @@ class EditBuddyProile extends Component {
     const name = e.target.name;
     if (
       name == "languagesSpoken" ||
+      name == "learningLanguages" ||
+      name == "interests" ||
       name == "availabilityHours" ||
       name == "availabilityDays"
     ) {
@@ -155,15 +161,14 @@ class EditBuddyProile extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Hobbies</Form.Label>
+            <Form.Label>Your City</Form.Label>
             <Form.Control
               type="text"
-              name="hobbies"
+              name="city"
               onChange={this.handleInputChange}
-              value={this.state.hobbies}
+              value={this.state.city}
             />
           </Form.Group>
-
 
           <Button variant="outline-dark" type="submit">
             Save Changes

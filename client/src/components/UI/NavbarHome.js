@@ -14,7 +14,6 @@ class Navigation extends Component {
     this.state = {
       showModalWindowLogin: false,
       showModalWindowSignup: false,
-      scrollBackground: "",
       isTop: true
     };
   }

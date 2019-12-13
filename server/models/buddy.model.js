@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const buddySchema = new Schema(
   {
-    BuddyPreferences: { maxAge: Number, minAge: Number, gender: String, location:[Number]},
+    buddyPreferences: { maxAge: Number, minAge: Number, gender: String},
     languagesSpoken: {
       type: [String]
       // enum: [
@@ -30,7 +30,7 @@ const buddySchema = new Schema(
       //   "Mandarin Chinese"
       // ]
     },
-    Hobbies: String
+    interests: [String]
   },
   {
     timestamps: true

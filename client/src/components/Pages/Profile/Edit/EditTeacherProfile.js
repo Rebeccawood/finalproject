@@ -12,21 +12,24 @@ class EditTeacherProfile extends Component {
   constructor(props) {
     super(props);
     this.Service = new Service();
-    this.filesService = new FilesService()
+    this.filesService = new FilesService();
     this.state = {
-    user: { username: this.props.loggedInUser.username,
-      email: this.props.loggedInUser.email,
-      bio: this.props.loggedInUser.bio,
-      teachingLanguages: [this.props.loggedInUser.teachingLanguages],
-      availabilityHours: [this.props.loggedInUser.availabilityHours],
-      availabilityDays: [this.props.loggedInUser.availabilityDays],
-      price: this.props.loggedInUser.price,
-      qualifications: this.props.loggedInUser.qualifications,
-      conditions: this.props.loggedInUser.conditions,
-      age: this.props.loggedInUser.age,
-      gender: this.props.loggedInUser.gender,},
+      user: {
+        username: this.props.loggedInUser.username,
+        email: this.props.loggedInUser.email,
+        bio: this.props.loggedInUser.bio,
+        teachingLanguages: [this.props.loggedInUser.teachingLanguages],
+        availabilityHours: [this.props.loggedInUser.availabilityHours],
+        availabilityDays: [this.props.loggedInUser.availabilityDays],
+        price: this.props.loggedInUser.price,
+        qualifications: this.props.loggedInUser.qualifications,
+        conditions: this.props.loggedInUser.conditions,
+        age: this.props.loggedInUser.age,
+        gender: this.props.loggedInUser.gender,
+        city: this.props.loggedInUser.city
+      },
       disabledButton: false,
-            buttonText: 'Save Changes',
+      buttonText: "Save Changes"
     };
   }
 
@@ -36,17 +39,20 @@ class EditTeacherProfile extends Component {
       .then(newTeacher => {
         this.props.setUser(newTeacher.data);
         this.setState({
-         user: { username: this.props.loggedInUser.username,
-          email: this.props.loggedInUser.email,
-          bio: this.props.loggedInUser.bio,
-          teachingLanguages: [this.props.loggedInUser.teachingLanguages],
-          availabilityHours: [this.props.loggedInUser.availabilityHours],
-          availabilityDays: [this.props.loggedInUser.availabilityDays],
-          price: this.props.loggedInUser.price,
-          qualifications: this.props.loggedInUser.qualifications,
-          conditions: this.props.loggedInUser.conditions,
-          age: this.props.loggedInUser.age,
-          gender: this.props.loggedInUser.gender}
+          user: {
+            username: this.props.loggedInUser.username,
+            email: this.props.loggedInUser.email,
+            bio: this.props.loggedInUser.bio,
+            teachingLanguages: [this.props.loggedInUser.teachingLanguages],
+            availabilityHours: [this.props.loggedInUser.availabilityHours],
+            availabilityDays: [this.props.loggedInUser.availabilityDays],
+            price: this.props.loggedInUser.price,
+            qualifications: this.props.loggedInUser.qualifications,
+            conditions: this.props.loggedInUser.conditions,
+            age: this.props.loggedInUser.age,
+            gender: this.props.loggedInUser.gender,
+            city: this.props.loggedInUser.city
+          }
         });
         this.props.closeModalWindow();
         this.props.history.push("/profile");
@@ -77,21 +83,6 @@ class EditTeacherProfile extends Component {
       });
     }
   };
-  handleFileUpload = e => {
-        this.setState({ disabledButton: true, buttonText: 'uploading image...' })
-        const uploadData = new FormData()
-        uploadData.append("imageUrl", e.target.files[0])
-        this.filesService.handleUpload(uploadData)
-            .then(response => {
-                console.log('file uploaded ', response.data.secure_url)
-                this.setState({
-                    disabledButton: false,
-                    buttonText: 'Save Changes',
-                    coaster: { ...this.state.user, imageUrl: response.data.secure_url }
-                })
-            })
-            .catch(err => console.log(err))
-     }
 
   render() {
     return (
@@ -256,7 +247,23 @@ class EditTeacherProfile extends Component {
             />
           </Form.Group>
 
-          <Button variant="outline-dark" type="submit" disabled={this.state.disabledButton}>{this.state.buttonText}</Button>
+          <Form.Group>
+            <Form.Label>Your City</Form.Label>
+            <Form.Control
+              type="text"
+              name="city"
+              onChange={this.handleInputChange}
+              value={this.state.city}
+            />
+          </Form.Group>
+
+          <Button
+            variant="outline-dark"
+            type="submit"
+            disabled={this.state.disabledButton}
+          >
+            {this.state.buttonText}
+          </Button>
         </Form>
         <br></br>
         <Button variant="outline-dark" onClick={this.props.closeModalWindow}>
@@ -268,5 +275,3 @@ class EditTeacherProfile extends Component {
 }
 
 export default withRouter(EditTeacherProfile);
-
-
