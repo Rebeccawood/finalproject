@@ -4,3 +4,7 @@ img {
     object-fit: cover;
     border-radius: 50%;
 }
+
+.teachers-filters {
+    margin-top: 200px;
+}

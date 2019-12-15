@@ -24,18 +24,19 @@ class Profile extends Component {
   render() {
     return (
       <>
-        <Container className="justify-content-around">
+        <img className="profile-bg" src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576427060/FinalProject/istockphoto-995719694-612x612_pcvvlj.jpg" alt="profile" />
+        <Container className="profile">
           <Row>
-            <h1> Hi, {this.props.loggedInUser.username}</h1>
-
+            
             <Col md>
-              <section>
+              <section className="section-profile">
+                <h3 className="greeting-profile"> Hi, {this.props.loggedInUser.username}</h3>
                 <AboutMe setUser={this.props.setUser} user={this.props.loggedInUser} loggedInUser={this.props.loggedInUser} />
               </section>
             </Col>
 
             <Col md>
-              <section>
+              <section className="section-profile">
                 <GeneralInfo
                   setUser={this.props.setUser}
                   user={this.props.loggedInUser}
@@ -54,7 +55,7 @@ class Profile extends Component {
             </Col>
 
             <Col md>
-              <section>
+              <section className="section-profile">
                 {this.props.loggedInUser.buddy ? (
                   <LearningLanguages user={this.props.loggedInUser} />
                 ) : (

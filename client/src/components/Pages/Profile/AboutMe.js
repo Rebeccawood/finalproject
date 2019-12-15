@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ButtonsEdit from "./ButtonsEdit";
-import {  Button } from "react-bootstrap";
+import {  Button, Container } from "react-bootstrap";
 
 class AboutMe extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class AboutMe extends Component {
   }
   render() {
     return (
-      <>
+      <Container>
         <img
           src={this.props.user.imgPath}
           className="profile-img"
@@ -30,7 +30,7 @@ class AboutMe extends Component {
         <hr></hr>
         <h5>About me:</h5>
         <p>{this.props.user.bio}</p>
-      </>
+      </Container>
     );
   }
 }

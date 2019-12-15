@@ -27,11 +27,12 @@ class Dashboard extends Component {
   render() {
     return (
       <>
-        <Container>
-            <h1> Welcome, </h1>
+        <img className="profile-bg" src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576427060/FinalProject/istockphoto-995719694-612x612_pcvvlj.jpg" alt="profile" />
+        <Container  >
+          <h1> Welcome, </h1>
           <Row>
-            
-            <Col md={6}>
+            <Col className="dashboard" md={6}>
+             
             <hr></hr>
               <h2>I want to find a language-buddy or teacher</h2>
               <p>Potential language buddies and teachers will want to know a few things about you before you meet. The more details you give about yourself and your language goals, the more chances you have to find the perfect buddy or teacher. Go ahead, fill out your profile! </p>
@@ -40,7 +41,7 @@ class Dashboard extends Component {
               </Button>
             </Col>
 
-            <Col  md={6}>
+            <Col className="dashboard" md={6}>
            <hr></hr>
               <h2>I'm a teacher and want to find students</h2>
               <p>We have a huge pool of active students looking for a teacher! Finding the perfect student has never been this easy. Fill out your pricing, availability etc. by clicking on the button below. Letting students know your conditions beforehand will save you tons of energy and time.</p>

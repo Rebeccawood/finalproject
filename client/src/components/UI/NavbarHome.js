@@ -37,7 +37,7 @@ class Navigation extends Component {
 // ------------------------- SCROLL ---------------------------//
   componentDidMount() {
     document.addEventListener("scroll", () => {
-      const isTop = window.scrollY < 100;
+      const isTop = window.scrollY < 50;
       if (isTop !== this.state.isTop) {
         this.setState({ isTop });
       }
@@ -51,7 +51,7 @@ class Navigation extends Component {
       : "to SpeakEasy";
 
     return this.props.loggedInUser ? (
-      <Navbar variant={this.state.isTop ? 'dark' : 'light'} scrolling expand="md" fixed="top" bg={this.state.isTop ? '' : 'light'}>
+      <Navbar variant="light" scrolling expand="md" fixed="top" bg={this.state.isTop ? '' : 'light'}>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav className="mr-auto navbar">
@@ -62,7 +62,13 @@ class Navigation extends Component {
               <Link to="/profile">My Profile</Link>
             </Nav.Link>
             <Nav.Link as="li">
-              <Link to="/search">Search Profiles</Link>
+              <Link to="/search">Search Buddies</Link>
+            </Nav.Link>
+            <Nav.Link as="li">
+              <Link to="/teachers">Search Teachers</Link>
+            </Nav.Link>
+            <Nav.Link as="li">
+              <Link to="/messages">Messages</Link>
             </Nav.Link>
             <Nav.Link as="li" onClick={this.logoutUser}>
               Logout
@@ -75,7 +81,7 @@ class Navigation extends Component {
       </Navbar>
     ) : (
       <>
-          <Navbar variant={this.state.isTop ? 'dark' : 'light'} scrolling expand="md" fixed="top" bg={this.state.isTop ? '' : 'light'}>
+          <Navbar variant="light" scrolling expand="md" fixed="top" bg={this.state.isTop ? '' : 'light'}>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse>
             <Nav className="mr-auto navbar">

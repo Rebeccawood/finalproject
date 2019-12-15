@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const buddySchema = new Schema(
   {
+    username: String,
     buddyPreferences: { maxAge: Number, minAge: Number, gender: String},
     languagesSpoken: {
       type: [String]

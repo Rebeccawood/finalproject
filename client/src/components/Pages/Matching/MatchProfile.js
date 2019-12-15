@@ -35,19 +35,21 @@ class MatchProfile extends Component {
    
     return this.state.user ? (
       <>
-        <Container className="justify-content-around">
+        <img className="profile-bg" src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576427060/FinalProject/istockphoto-995719694-612x612_pcvvlj.jpg" alt="profile" />
+        <Container >
           <Row>
-            <h1> {this.state.user.username}</h1>
+            
 
             <Col md>
-              <section>
+              <section className="section-profile">
+                <h3 className="greeting-profile"> {this.state.user.username}</h3>
                 <AboutMe user={this.state.user} loggedInUser={this.props.loggedInUser} />
-                />
+               
               </section>
             </Col>
 
             <Col md>
-              <section>
+              <section className="section-profile">
                 <GeneralInfo
                   setUser={this.props.setUser}
                   user={this.state.user}
@@ -61,7 +63,7 @@ class MatchProfile extends Component {
             </Col>
 
             <Col md>
-              <section>
+              <section className="section-profile">
                 {this.state.user.buddy ? (
                   <LearningLanguages user={this.state.user} />
                 ) : (

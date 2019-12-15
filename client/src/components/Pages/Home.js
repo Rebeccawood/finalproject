@@ -11,7 +11,7 @@ class Home extends Component {
     return (
       <div className="home">
         <img
-          src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1575995485/FinalProject%20Ironhack/faces_dz5e32.jpg"
+          src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576432336/FinalProject/priscilla-du-preez-nF8xhLMmg0c-unsplash_mvcdzt.jpg"
           alt="home"
         />
 

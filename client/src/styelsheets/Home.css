@@ -3,7 +3,7 @@
 }
 .home img {
   width: 100%;
-  height: 650px;
+  height: 550px;
   object-fit: cover;
   border-radius: 0
  
@@ -12,22 +12,26 @@
   text-align: center;
 }
 h1 {
-  color: rgb(52, 58, 64);
+  
   padding-top: 30px;
  
 }
 
 .section-one {
-  color: rgb(52, 58, 64);
+ 
   background: rgb(244, 246, 247);
   width: 100%;
   height: 500px;
   text-align: justify;
 }
 .section-two {
+  color: white !important;
   background: rgb(52, 58, 64);
-  color: white;
+
   width: 100%;
   height: 350px;
   text-align: justify;
+}
+.dashboard {
+  margin-top: 100px;
 }

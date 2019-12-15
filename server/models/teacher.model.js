@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const teacherSchema = new Schema(
   {
+    username: String,
     price: Number,
     teachingLanguages: {
       type: [String],

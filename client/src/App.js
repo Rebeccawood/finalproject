@@ -11,6 +11,7 @@ import Profile from "./components/pages/profile/Profile";
 import Dashboard from "./components/pages/Dashboard";
 import SearchProfiles from "./components/pages/matching/SearchProfiles";
 import MatchProfile from "./components/pages/matching/MatchProfile";
+import TeacherProfiles from "./components/pages/matching/TeachersProfiles"
 
 //------------- UI Components ----------//
 import Navigation from "./components/ui/NavbarHome";
@@ -93,6 +94,17 @@ class App extends Component {
               />
             )}
           />
+          <Route
+            exact
+            path="/teachers"
+            render={() =>
+              this.state.loggedInUser ? (
+                <TeacherProfiles user={this.state.loggedInUser} />
+              ) : (
+                  <Redirect to="/" />
+                )
+            }
+          />
 
           <Route
             exact
@@ -105,6 +117,9 @@ class App extends Component {
               )
             }
           />
+
+         
+
         </Switch>
       </>
     );

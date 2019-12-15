@@ -31,8 +31,9 @@ class SearchProfiles extends Component {
     return this.state.user ? (
       
       <section>
+        <img className="profile-bg" src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576427060/FinalProject/istockphoto-995719694-612x612_pcvvlj.jpg"  alt="profile" />
         <Container>
-          <h1>All profiles that match your preferences</h1>
+     
           <Row>
             {this.state.user.map(user => (
               <ProfileCard key={user._id} user={user} />

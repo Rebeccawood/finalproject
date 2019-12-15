@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import List from "./List"
+import Container from "react-bootstrap/Col";
 
 class Interests extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Interests extends Component {
   render(){
     console.log(this.props)
  return (
-    <>
+    <Container>
       
   <h5>Interests:</h5>
 
@@ -22,7 +23,7 @@ class Interests extends Component {
      </ul>
  
    
-   </>
+   </Container>
   )}
 };
 

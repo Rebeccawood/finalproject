@@ -12,17 +12,15 @@ router.get("/allProfiles", (req, res) => {
         "after populate"
       );
 
-      User.find(
-        {
-          $and: [
-            { gender: populatedUser.buddy.buddyPreferences.gender },
-            { city: populatedUser.city},
-            { languagesSpoke: populatedUser.learningLanguages },
-            { age: { $gte: populatedUser.buddy.buddyPreferences.minAge } },
-            { age: { $lte: populatedUser.buddy.buddyPreferences.maxAge } }
-          ]
-        }
-      )
+      User.find({
+        $and: [
+          { gender: populatedUser.buddy.buddyPreferences.gender },
+          { city: populatedUser.city },
+          { languagesSpoke: populatedUser.buddy.learningLanguages },
+          { age: { $gte: populatedUser.buddy.buddyPreferences.minAge } },
+          { age: { $lte: populatedUser.buddy.buddyPreferences.maxAge } }
+        ]
+      })
         .then(allProfiles => {
           console.log(allProfiles);
           res.json(allProfiles);
@@ -30,6 +28,24 @@ router.get("/allProfiles", (req, res) => {
         .catch(err => console.log("DB error", err));
     })
     .catch(err => console.log(err));
+});
+
+router.get("/teachers", (req, res) => {
+  User.findById(req.user._id)
+    .populate("buddy")
+    .then(populatedUser => {
+      User.find({
+        $and: [
+          { city: populatedUser.city },
+          { languagesSpoke: populatedUser.teacher.teachingLanguages }
+        ]
+      })
+        .then(allProfiles => {
+          console.log(allProfiles);
+          res.json(allProfiles);
+        })
+        .catch(err => console.log("DB error", err));
+    });
 });
 
 module.exports = router;

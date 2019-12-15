@@ -46,7 +46,7 @@ class ButtonsEdit extends Component {
             <Button variant="outline-dark" onClick={this.handleShowBuddy}>
               Edit Buddy Profile
             </Button>
-            <br></br>
+            <br></br> <hr></hr>
             <Button variant="outline-dark" onClick={this.handleShowPreferences}>
               Edit Search Preferences
             </Button>
@@ -57,7 +57,7 @@ class ButtonsEdit extends Component {
           </Button>
         )}
 
-       <br></br>
+       <br></br> <hr></hr>
         <Button variant="outline-dark" onClick={this.handleShowImg}>
           Change Picture
         </Button>
