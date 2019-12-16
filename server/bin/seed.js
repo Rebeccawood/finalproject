@@ -1,4 +1,4 @@
-// node bin/seeds.js
+// node bin/seed.js
 
 require("dotenv").config();
 
@@ -451,22 +451,22 @@ let users = [
     city: "Madrid"
   }
 ];
-User.deleteMany()
-  .then(() => {
-    return User.create(users);
-  })
-  .then(usersCreated => {
-    console.log(`${usersCreated.length} users created with the following id:`);
-    console.log(usersCreated.map(u => u._id));
-  })
-  .then(() => {
-    // Close properly the connection to Mongoose
-    mongoose.disconnect();
-  })
-  .catch(err => {
-    mongoose.disconnect();
-    throw err;
-  });
+// User.deleteMany()
+//   .then(() => {
+//     return User.create(users);
+//   })
+//   .then(usersCreated => {
+//     console.log(`${usersCreated.length} users created with the following id:`);
+//     console.log(usersCreated.map(u => u._id));
+//   })
+//   .then(() => {
+//     // Close properly the connection to Mongoose
+//     mongoose.disconnect();
+//   })
+//   .catch(err => {
+//     mongoose.disconnect();
+//     throw err;
+//   });
 
 let teacher = [
   {
@@ -534,22 +534,22 @@ let teacher = [
     qualifications: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
   }
 ];
-Teacher.deleteMany()
-  .then(() => {
-    return Teacher.create(users);
-  })
-  .then(usersCreated => {
-    console.log(`${Created.length} teachers created with the following id:`);
-    console.log(usersCreated.map(u => u._id));
-  })
-  .then(() => {
-    // Close properly the connection to Mongoose
-    mongoose.disconnect();
-  })
-  .catch(err => {
-    mongoose.disconnect();
-    throw err;
-  });
+// Teacher.deleteMany()
+//   .then(() => {
+//     return Teacher.create(users);
+//   })
+//   .then(usersCreated => {
+//     console.log(`${Created.length} teachers created with the following id:`);
+//     console.log(usersCreated.map(u => u._id));
+//   })
+//   .then(() => {
+//     // Close properly the connection to Mongoose
+//     mongoose.disconnect();
+//   })
+//   .catch(err => {
+//     mongoose.disconnect();
+//     throw err;
+//   });
 
 let buddies = [
   {
@@ -656,5 +656,32 @@ Buddy.deleteMany()
     throw err;
   });
 
+User.collection.drop().catch(err => console.log(err, "catch drop user"));
+Buddy.collection
+  .drop()
+  .then(() => Buddy.create(username))
+  .then(buddiesCreated => {
+    console.log(`${buddiesCreated.length} Buddies created`);
+    buddiesCreated.forEach(buddyField => {
+      User.findOne({ username: buddyField.username }).then(user => {
+        user.buddy._id = new mongoose.Types.ObjectId(buddyField._id);
+        buddy.save()
+          .catch(err => console.log(err, "error buddy collection"))
+      });
+    });
+  })
+Teacher.collection
+.drop()
+  .then(() => Teacher.create(username))
+  .then(teachersCreated => {
+    console.log(`${teachersCreated.length} teachers created`);
 
-  
+    teachersCreated.forEach(teacherField => {
+      User.findOne({ username: teacherField.username }).then(user => {
+        user.teacher._id = new mongoose.Types.ObjectId(teacherField._id);
+        teacher.save()
+          .catch(err => console.log(err, "error teacher collection"))
+      });
+      
+    });
+  });

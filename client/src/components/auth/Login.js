@@ -36,7 +36,7 @@ class Login extends Component {
       })
       .catch(err => {
         console.log(err);
-        this.handleToastOpen(err.response.data.message);
+        // this.handleToastOpen(err.response.data.message);
       });
   };
   handleToastClose = () => this.setState({ showToast: false, toastText: "" });

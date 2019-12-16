@@ -19,7 +19,7 @@ const userSchema = new Schema(
     teacher: { type: Schema.Types.ObjectId, ref: "Teacher" },
     availabilityDays: {
       type: [String],
-      enum: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+      enum: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     },
     availabilityHours: [String],
     // enum: [
