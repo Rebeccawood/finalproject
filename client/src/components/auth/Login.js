@@ -29,6 +29,7 @@ class Login extends Component {
     this.service
       .login(username, password)
       .then(theLoggedUser => {
+        console.log("is this user populated", theLoggedUser);
         this.props.setUser(theLoggedUser.data);
         this.props.closeModalWindow();
         this.setState({ username: "", password: "" });

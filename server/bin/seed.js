@@ -468,7 +468,7 @@ let users = [
 //     throw err;
 //   });
 
-let teacher = [
+let teachers = [
   {
     username: "nadia567",
     price: 20,
@@ -637,50 +637,57 @@ let buddies = [
     interests: ["Literature", "Art & Design", "Sports", "Business", "Music"]
   }
 ];
-Buddy.deleteMany()
-  .then(() => {
-    return Buddy.create(users);
-  })
-  .then(usersCreated => {
-    console.log(
-      `${usersCreated.length} buddies created with the following id:`
-    );
-    console.log(usersCreated.map(u => u._id));
-  })
-  .then(() => {
-    // Close properly the connection to Mongoose
-    mongoose.disconnect();
-  })
-  .catch(err => {
-    mongoose.disconnect();
-    throw err;
-  });
 
-User.collection.drop().catch(err => console.log(err, "catch drop user"));
-Buddy.collection
+User.collection
   .drop()
-  .then(() => Buddy.create(username))
+  .then(() => User.create(users))
+  .then(usersCreated => {
+    console.log(`${usersCreated.length} Users created`);
+    return Buddy.collection.drop();
+  })
+  .then(() => Buddy.create(buddies))
   .then(buddiesCreated => {
-    console.log(`${buddiesCreated.length} Buddies created`);
+    console.log(buddiesCreated, "these are the buddies");
+    // console.log(`${buddiesCreated.length} Buddies created`);
     buddiesCreated.forEach(buddyField => {
       User.findOne({ username: buddyField.username }).then(user => {
-        user.buddy._id = new mongoose.Types.ObjectId(buddyField._id);
-        buddy.save().catch(err => console.log(err, "error buddy collection"));
+        user.buddy = new mongoose.Types.ObjectId(buddyField._id);
+        user
+          .save()
+          .then(() => console.log("user saved"))
+          .catch(err => console.log(err, "error buddy collection"));
       });
     });
-  });
-Teacher.collection
-  .drop()
-  .then(() => Teacher.create(username))
+  })
+  .then(() => Teacher.collection.drop())
+  .then(() => Teacher.create(teachers))
   .then(teachersCreated => {
     console.log(`${teachersCreated.length} teachers created`);
 
     teachersCreated.forEach(teacherField => {
       User.findOne({ username: teacherField.username }).then(user => {
-        user.teacher._id = new mongoose.Types.ObjectId(teacherField._id);
-        teacher
-          .save()
-          .catch(err => console.log(err, "error teacher collection"));
+        user.teacher = new mongoose.Types.ObjectId(teacherField._id);
+        user.save().catch(err => console.log(err, "error teacher collection"));
       });
     });
   });
+// .finally(() => mongoose.disconnect());
+
+// Buddy.deleteMany()
+//   .then(() => {
+//     return Buddy.create(users);
+//   })
+//   .then(usersCreated => {
+//     console.log(
+//       `${usersCreated.length} buddies created with the following id:`
+//     );
+//     console.log(usersCreated.map(u => u._id));
+//   })
+//   .then(() => {
+//     // Close properly the connection to Mongoose
+//     mongoose.disconnect();
+//   })
+//   .catch(err => {
+//     mongoose.disconnect();
+//     throw err;
+//   });

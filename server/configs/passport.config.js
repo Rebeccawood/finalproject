@@ -8,6 +8,7 @@ passport.serializeUser((loggedInUser, cb) => cb(null, loggedInUser._id));
 passport.deserializeUser((userIdFromSession, cb) => {
   User.findById(userIdFromSession)
     .populate("teacher")
+    .populate("buddy")
     .then(userDocument => {
       cb(null, userDocument);
     })
@@ -21,6 +22,7 @@ passport.use(
   new LocalStrategy((username, password, next) => {
     User.findOne({ username })
       .populate("teacher")
+      .populate("buddy")
       .then(foundUser => {
         if (foundUser == null) {
           next(null, false, { message: "User not registered." });

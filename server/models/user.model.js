@@ -15,11 +15,20 @@ const userSchema = new Schema(
     bio: String,
     age: Number,
     gender: { type: String, enum: ["female", "male", "other"] },
+    role: String,
     buddy: { type: Schema.Types.ObjectId, ref: "Buddy" },
     teacher: { type: Schema.Types.ObjectId, ref: "Teacher" },
     availabilityDays: {
       type: [String],
-      enum: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+      enum: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ]
     },
     availabilityHours: [String],
     // enum: [
@@ -36,7 +45,7 @@ const userSchema = new Schema(
     //   "20:00 - 21:00"
     // ]
 
-    city: String,
+    city: String
   },
   {
     timestamps: true
