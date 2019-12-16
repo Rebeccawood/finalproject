@@ -11,8 +11,11 @@ import Profile from "./components/pages/profile/Profile";
 import Dashboard from "./components/pages/Dashboard";
 import SearchProfiles from "./components/pages/matching/SearchProfiles";
 import MatchProfile from "./components/pages/matching/MatchProfile";
-import TeacherProfiles from "./components/pages/matching/TeachersProfiles"
+import TeacherProfiles from "./components/pages/matching/TeachersProfiles";
 
+//------------- Chat Components ----------//
+import ChatList from "./components/chat/ChatList";
+import Chat from "./components/chat/Chat";
 //------------- UI Components ----------//
 import Navigation from "./components/ui/NavbarHome";
 
@@ -21,9 +24,14 @@ import Navigation from "./components/ui/NavbarHome";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedInUser: null };
+    this.state = { 
+      loggedInUser: null, 
+      socketList: [] };
+
+    // this.socket = io("http://localhost/5000");
     this.service = new Service();
   }
+
   // --------------------- USER CONFIG ------------------------ //
   setTheUser = user => {
     this.setState({ loggedInUser: user });
@@ -101,8 +109,8 @@ class App extends Component {
               this.state.loggedInUser ? (
                 <TeacherProfiles user={this.state.loggedInUser} />
               ) : (
-                  <Redirect to="/" />
-                )
+                <Redirect to="/" />
+              )
             }
           />
 
@@ -118,8 +126,17 @@ class App extends Component {
             }
           />
 
-         
-
+          <Route
+            exact
+            path="/messages"
+            render={() =>
+              this.state.loggedInUser ? (
+                <ChatList socket={this.socket} />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          />
         </Switch>
       </>
     );

@@ -63,11 +63,11 @@ class BuddyEdit extends Component {
   handleInputChange = e => {
     const name = e.target.name;
     if (
-      name == "languagesSpoken" ||
-      name == "learningLanguages" ||
-      name == "interests" ||
-      name == "availabilityHours" ||
-      name == "availabilityDays"
+      name === "languagesSpoken" ||
+      name === "learningLanguages" ||
+      name === "interests" ||
+      name === "availabilityHours" ||
+      name === "availabilityDays"
     ) {
       const languageValue = e.target.value;
       const array = [...this.state[name]];

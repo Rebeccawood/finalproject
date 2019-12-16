@@ -54,9 +54,9 @@ class TeacherEdit extends Component {
   handleInputChange = e => {
     const name = e.target.name;
     if (
-      name == "teachingLanguages" ||
-      name == "availabilityHours" ||
-      name == "availabilityDays"
+      name === "teachingLanguages" ||
+      name === "availabilityHours" ||
+      name === "availabilityDays"
     ) {
       const languageValue = e.target.value;
       const array = [...this.state[name]];

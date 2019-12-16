@@ -7,31 +7,30 @@ router.get("/allProfiles", (req, res) => {
   User.findById(req.user._id)
     .populate("buddy")
     .then(populatedUser => {
-      console.log(
-        populatedUser.buddy.buddyPreferences.minAge,
-        "after populate"
-      );
+      console.log(populatedUser, "after populate");
 
       User.find({
         $and: [
+          { buddy: { $exists: true } },
+          { teacher: { $exists: false } },
           { gender: populatedUser.buddy.buddyPreferences.gender },
           { city: populatedUser.city },
-          // { languagesSpoke: {$in: populatedUser.buddy.learningLanguages} },
           { age: { $gte: populatedUser.buddy.buddyPreferences.minAge } },
           { age: { $lte: populatedUser.buddy.buddyPreferences.maxAge } }
         ]
       })
         .populate("buddy")
+
         .then(allProfiles => {
           const languageArray = populatedUser.buddy.learningLanguages;
 
-          let filteredArr = allProfiles.filter(userProfile =>
+          const filteredArr = allProfiles.filter(userProfile =>
             languageArray.some(lang => {
-              console.log(userProfile);
-              userProfile.buddy.languagesSpoken.includes(lang);
+              console.log(userProfile, "pizza");
+              return userProfile.buddy.languagesSpoken.includes(lang);
             })
           );
-          console.log(filteredArr);
+          console.log(filteredArr, "pasta");
           res.json(filteredArr);
         })
         .catch(err => console.log("DB error", err));
@@ -39,28 +38,35 @@ router.get("/allProfiles", (req, res) => {
     .catch(err => console.log(err));
 });
 
-
-
-
-
-
-
 router.get("/teachers", (req, res) => {
   User.findById(req.user._id)
     .populate("buddy")
     .then(populatedUser => {
       User.find({
         $and: [
-          { city: populatedUser.city },
-          { languagesSpoke: populatedUser.teacher.teachingLanguages }
+          { teacher: { $exists: true } },
+          { buddy: { $exists: false } },
+          { city: populatedUser.city }
         ]
       })
+        .populate("buddy")
+        .populate("teacher")
         .then(allProfiles => {
-          console.log(allProfiles);
-          res.json(allProfiles);
+          console.log(allProfiles, "banana");
+          const languageArray = populatedUser.buddy.learningLanguages;
+
+          const filteredArr = allProfiles.filter(userProfile =>
+            languageArray.some(lang => {
+              console.log(userProfile, "sauce");
+              return userProfile.teacher.teachingLanguages.includes(lang);
+            })
+          );
+          console.log(filteredArr, "tomato");
+          res.json(filteredArr);
         })
         .catch(err => console.log("DB error", err));
-    });
+    })
+    .catch(err => console.log(err));
 });
 
 module.exports = router;
