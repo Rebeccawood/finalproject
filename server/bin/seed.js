@@ -665,13 +665,12 @@ Buddy.collection
     buddiesCreated.forEach(buddyField => {
       User.findOne({ username: buddyField.username }).then(user => {
         user.buddy._id = new mongoose.Types.ObjectId(buddyField._id);
-        buddy.save()
-          .catch(err => console.log(err, "error buddy collection"))
+        buddy.save().catch(err => console.log(err, "error buddy collection"));
       });
     });
-  })
+  });
 Teacher.collection
-.drop()
+  .drop()
   .then(() => Teacher.create(username))
   .then(teachersCreated => {
     console.log(`${teachersCreated.length} teachers created`);
@@ -679,9 +678,9 @@ Teacher.collection
     teachersCreated.forEach(teacherField => {
       User.findOne({ username: teacherField.username }).then(user => {
         user.teacher._id = new mongoose.Types.ObjectId(teacherField._id);
-        teacher.save()
-          .catch(err => console.log(err, "error teacher collection"))
+        teacher
+          .save()
+          .catch(err => console.log(err, "error teacher collection"));
       });
-      
     });
   });
