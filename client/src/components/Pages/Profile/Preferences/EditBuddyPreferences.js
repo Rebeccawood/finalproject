@@ -11,9 +11,10 @@ class BuddyPreferences extends Component {
     super(props);
     this.service = new Service();
     this.state = {
-      maxAge: 100,
-      minAge: 18,
-      gender: ""
+      maxAge: this.props.user.buddy.buddyPreferences.maxAge,
+      minAge: this.props.user.buddy.buddyPreferences.minAge,
+      gender: this.props.user.buddy.buddyPreferences.gender,
+     
     };
   }
 
@@ -26,9 +27,10 @@ class BuddyPreferences extends Component {
         console.log(newPreferences, "this is the updated user ");
         this.props.setUser(newPreferences.data);
         this.setState({
-          maxAge: 100,
-          minAge: 18,
-          gender: ""
+          maxAge: this.props.user.buddy.buddyPreferences.maxAge,
+          minAge: this.props.user.buddy.buddyPreferences.minAge,
+          gender: this.props.user.buddy.buddyPreferences.gender,
+         
         });
         this.props.closeModalWindow();
         this.props.history.push("/profile");
@@ -47,30 +49,33 @@ class BuddyPreferences extends Component {
       <Form onSubmit={this.handleSubmit}>
         <h1>Choose your Buddy Preferences</h1>
 
-        <Form.Group controlId="exampleForm.ControlTextarea1">
+        <Form.Group>
           <Form.Label>Min Age</Form.Label>
           <Form.Control
             type="number"
+            id="input1"
             name="minAge"
             onChange={this.handleInputChange}
             value={this.state.minAge}
           />
         </Form.Group>
 
-        <Form.Group controlId="exampleForm.ControlTextarea1">
+        <Form.Group >
           <Form.Label>Max Age</Form.Label>
           <Form.Control
             type="number"
+            id="input2"
             name="maxAge"
             onChange={this.handleInputChange}
             value={this.state.maxAge}
           />
         </Form.Group>
 
-        <Form.Group controlId="formGridState">
+        <Form.Group>
           <Form.Label>Gender</Form.Label>
           <Form.Control
             as="select"
+            id="input3"
             name="gender"
             onChange={this.handleInputChange}
             value={this.state.gender}
@@ -81,6 +86,20 @@ class BuddyPreferences extends Component {
             <option>Other</option>
           </Form.Control>
         </Form.Group>
+
+        {/* <Form.Group controlId="formGridState">
+          <Form.Label>Are you also looking for teachers?</Form.Label>
+          <Form.Control
+            as="select"
+            name="teacher"
+            onChange={this.handleInputChange}
+            value={this.state.teacher}
+          >
+            <option>...choose</option>
+            <option>Yes</option>
+            <option>No</option>
+          </Form.Control>
+        </Form.Group> */}
 
         <Button variant="outline-dark" type="submit">
           Save Changes

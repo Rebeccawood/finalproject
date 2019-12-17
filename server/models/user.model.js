@@ -14,8 +14,7 @@ const userSchema = new Schema(
     imgName: String,
     bio: String,
     age: Number,
-    gender: { type: String, enum: ["female", "male", "other"] },
-    role: String,
+    gender: { type: String, enum: ["female", "male", "other"], default: "other" },
     buddy: { type: Schema.Types.ObjectId, ref: "Buddy" },
     teacher: { type: Schema.Types.ObjectId, ref: "Teacher" },
     availabilityDays: {
@@ -28,23 +27,10 @@ const userSchema = new Schema(
         "Friday",
         "Saturday",
         "Sunday"
-      ]
+      ],
+      default: ["Saturday", "Sunday"],
     },
-    availabilityHours: [String],
-    // enum: [
-    //   "8:00 - 9:00",
-    //   "9:00 - 10:00",
-    //   "10:00 - 11:00",
-    //   "11:00 - 12:00",
-    //   "12:00 - 13:00",
-    //   "13:00 - 14:00",
-    //   "14:00 - 15:00",
-    //   "16:00 - 17:00",
-    //   "17:00 - 18:00",
-    //   "19:00 - 20:00",
-    //   "20:00 - 21:00"
-    // ]
-
+    availabilityHours: {type: [String], default:["12:00 - 13:00", "13:00 - 14:00" ] },
     city: String
   },
   {

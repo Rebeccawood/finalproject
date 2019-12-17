@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Service from "./service/auth.service";
+import io from "socket.io-client";
 
 //-------------Stylesheets ----------//
 import "./styelsheets/App.css";
@@ -14,8 +15,9 @@ import MatchProfile from "./components/pages/matching/MatchProfile";
 import TeacherProfiles from "./components/pages/matching/TeachersProfiles";
 
 //------------- Chat Components ----------//
-import ChatList from "./components/chat/ChatList";
+import MessagesView from "./components/chat/MessagesView"
 import Chat from "./components/chat/Chat";
+
 //------------- UI Components ----------//
 import Navigation from "./components/ui/NavbarHome";
 
@@ -28,7 +30,7 @@ class App extends Component {
       loggedInUser: null, 
       socketList: [] };
 
-    // this.socket = io("http://localhost/5000");
+  //  this.socket = io("http://localhost/:5000/chat");
     this.service = new Service();
   }
 
@@ -126,17 +128,8 @@ class App extends Component {
             }
           />
 
-          <Route
-            exact
-            path="/messages"
-            render={() =>
-              this.state.loggedInUser ? (
-                <ChatList socket={this.socket} />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
-          />
+          {/* <Route exact path="/messages" socket={this.state.socket} loggedInUser={this.state.loggedInUser} component={MessagesView} />
+          <Route exact path="/chat" socket={this.state.socket} user={this.state.loggedInUser} component={Chat} /> */}
         </Switch>
       </>
     );

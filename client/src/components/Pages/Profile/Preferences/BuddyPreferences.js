@@ -16,6 +16,8 @@ class Preferences extends Component {
           <li>Max Age: {this.props.user.buddy.buddyPreferences.maxAge}</li>
           <li>Gender: {this.props.user.buddy.buddyPreferences.gender}</li>
         </ul>
+        {/* <h5>Also looking for teachers?</h5>{" "}
+        <p>{this.props.user.buddy.buddyPreferences.teacher}</p> */}
       </Container>
     );
   }

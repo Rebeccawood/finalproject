@@ -29,35 +29,17 @@ class TeachersProfiles extends Component {
 
   render() {
     return (
-      <section>
-        <img
-          className="profile-bg"
-          src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576427060/FinalProject/istockphoto-995719694-612x612_pcvvlj.jpg"
-          alt="profile"
-        />
-        <Container>
-
-          <Row>
-          <Col  md={8}>
-            {this.state.user.map(user => (
-              <ProfileCard key={user._id} user={user} />
-            ))}
-            </Col>
-            <Col className="teachers-filters" md={4}>
- <Form>
-              <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Female" />
-              </Form.Group>
-
-                <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Male" />
-                </Form.Group>
-
-              </Form>
- </Col>
-          </Row>
-        </Container>
-      </section>
+      <div className="profile-bg">
+        <section className="search-profile">
+          <Container>
+            <Row>
+              {this.state.user.map(user => (
+                <ProfileCard key={user._id} user={user} />
+              ))}
+            </Row>
+          </Container>
+        </section>
+      </div>
     );
   }
 }

@@ -78,11 +78,11 @@ class MatchProfile extends Component {
                 <Availability user={this.state.user} />
 
                 
-              {/* {this.state.user.teacher ? (
+              {this.state.user.teacher ? (
                 <ConditionsTeacher user={this.state.user} />
               ) : (
                 <BuddyPreferences user={this.state.user}  />
-              )} */}
+              )}
               </section>
             </Col>
           </Row>

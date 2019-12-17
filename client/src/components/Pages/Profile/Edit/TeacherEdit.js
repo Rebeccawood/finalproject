@@ -77,11 +77,12 @@ class TeacherEdit extends Component {
         <Form onSubmit={this.handleSubmit}>
           <h1>Teacher Profile</h1>
 
-          <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Group>
             <Form.Label>About me</Form.Label>
             <Form.Control
               as="textarea"
               rows="3"
+              id="input1"
               type="text"
               name="bio"
               onChange={this.handleInputChange}
@@ -93,18 +94,20 @@ class TeacherEdit extends Component {
             <Form.Label>Qualifications</Form.Label>
             <Form.Control
               type="text"
+              id="input2"
               name="qualifications"
               onChange={this.handleInputChange}
               value={this.state.qualifications}
             />
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group>
             <Form.Label>
               Languages I teach (you can pick more than one):
             </Form.Label>
             <Form.Control
               as="select"
+              id="input3"
               multiple
               name="teachingLanguages"
               onChange={this.handleInputChange}
@@ -121,12 +124,13 @@ class TeacherEdit extends Component {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group>
             <Form.Label>
               Days of the week I am available (you can pick more than one):
             </Form.Label>
             <Form.Control
               as="select"
+              id="input4"
               multiple
               name="availabilityDays"
               onChange={this.handleInputChange}
@@ -142,12 +146,13 @@ class TeacherEdit extends Component {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group>
             <Form.Label>
               Hours I am available (you can pick more than one):
             </Form.Label>
             <Form.Control
               as="select"
+              id="input5"
               multiple
               name="availabilityHours"
               onChange={this.handleInputChange}
@@ -174,16 +179,18 @@ class TeacherEdit extends Component {
             <Form.Control
               type="number"
               name="age"
+              id="input6"
               onChange={this.handleInputChange}
               value={this.state.age}
             />
           </Form.Group>
 
-          <Form.Group controlId="formGridState">
+          <Form.Group>
             <Form.Label>Gender</Form.Label>
             <Form.Control
               as="select"
               name="gender"
+              id="input7"
               onChange={this.handleInputChange}
               value={this.state.gender}
             >
@@ -199,15 +206,17 @@ class TeacherEdit extends Component {
             <Form.Control
               type="number"
               name="price"
+              id="input8"
               onChange={this.handleInputChange}
               value={this.state.price}
             />
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Group>
             <Form.Label>Other conditions</Form.Label>
             <Form.Control
               as="textarea"
+              id="input9"
               rows="3"
               type="text"
               name="conditions"
@@ -220,6 +229,7 @@ class TeacherEdit extends Component {
             <Form.Label>Your City</Form.Label>
             <Form.Control
               type="text"
+              id="input10"
               name="city"
               onChange={this.handleInputChange}
               value={this.state.city}

@@ -22,16 +22,26 @@ class Profile extends Component {
   }
 
   render() {
-    return (
+    return this.props.loggedInUser.buddy ? (
       <>
-        <img className="profile-bg" src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576427060/FinalProject/istockphoto-995719694-612x612_pcvvlj.jpg" alt="profile" />
+        <img
+          className="profile-bg"
+          src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576427060/FinalProject/istockphoto-995719694-612x612_pcvvlj.jpg"
+          alt="profile"
+        />
         <Container className="profile">
           <Row>
-            
             <Col md>
               <section className="section-profile">
-                <h3 className="greeting-profile"> Hi, {this.props.loggedInUser.username}</h3>
-                <AboutMe setUser={this.props.setUser} user={this.props.loggedInUser} loggedInUser={this.props.loggedInUser} />
+                <h3 className="greeting-profile">
+                  {" "}
+                  Hi, {this.props.loggedInUser.username}
+                </h3>
+                <AboutMe
+                  setUser={this.props.setUser}
+                  user={this.props.loggedInUser}
+                  loggedInUser={this.props.loggedInUser}
+                />
               </section>
             </Col>
 
@@ -56,10 +66,10 @@ class Profile extends Component {
 
             <Col md>
               <section className="section-profile">
-                {this.props.loggedInUser.buddy ? (
-                  <LearningLanguages user={this.props.loggedInUser} />
-                ) : (
+                {this.props.loggedInUser.teacher ? (
                   <TeachingLanguages user={this.props.loggedInUser} />
+                ) : (
+                  <LearningLanguages user={this.props.loggedInUser} />
                 )}
                 {this.props.loggedInUser.teacher ? (
                   <Qualifications user={this.props.loggedInUser} />
@@ -72,8 +82,9 @@ class Profile extends Component {
             </Col>
           </Row>
         </Container>
-      </>
-    );
+    </> ) : (<h1 style={{margin:100}}>retrieving the user...</h1>)
+
+    
   }
 }
 export default Profile;

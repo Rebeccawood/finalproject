@@ -239,6 +239,7 @@ let users = [
     ],
     city: "Madrid"
   },
+
   {
     username: "cooltyler5",
     password: bcrypt.hashSync("password", bcrypt.genSaltSync(bcryptSalt)),
@@ -282,7 +283,7 @@ let users = [
     password: bcrypt.hashSync("password", bcrypt.genSaltSync(bcryptSalt)),
     email: "email@gmail.com",
     imgPath:
-      "https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576314504/FinalProject/aziz-acharki-SKFdd8JGU-0-unsplash_m7mg56.jpg",
+      "https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576314656/FinalProject/christina-wocintechchat-com-c-mgSuxqpzA-unsplash_xy2heh.jpg",
     bio:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     age: 34,
@@ -302,7 +303,7 @@ let users = [
     password: bcrypt.hashSync("password", bcrypt.genSaltSync(bcryptSalt)),
     email: "email@gmail.com",
     imgPath:
-      "https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576314504/FinalProject/aziz-acharki-SKFdd8JGU-0-unsplash_m7mg56.jpg",
+      "https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576314713/FinalProject/luis-machado-nCGl8FrGHb0-unsplash_tvabud.jpg",
     bio:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     age: 40,
@@ -332,9 +333,9 @@ let users = [
     password: bcrypt.hashSync("password", bcrypt.genSaltSync(bcryptSalt)),
     email: "email@gmail.com",
     imgPath:
-      "https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576314851/FinalProject/javier-sierra-6jopFhZkGGk-unsplash_h4d0qr.jpg",
-    bio:
       "https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576314653/FinalProject/rowen-smith-RQ1HNnopBbY-unsplash_rqjw55.jpg",
+    bio:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     age: 34,
     gender: "male",
     availabilityDays: ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -372,7 +373,7 @@ let users = [
     password: bcrypt.hashSync("password", bcrypt.genSaltSync(bcryptSalt)),
     email: "email@gmail.com",
     imgPath:
-      "https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576314791/FinalProject/marius-ciocirlan-vMV6r4VRhJ8-unsplash_alfsle.jpg",
+      "https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576314851/FinalProject/javier-sierra-6jopFhZkGGk-unsplash_h4d0qr.jpg",
     bio:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     age: 45,
@@ -392,7 +393,7 @@ let users = [
     password: bcrypt.hashSync("password", bcrypt.genSaltSync(bcryptSalt)),
     email: "email@gmail.com",
     imgPath:
-      "https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576314794/FinalProject/bbh-singapore-Kp0zyajw228-unsplash_oeylvr.jpg",
+      "https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576314791/FinalProject/marius-ciocirlan-vMV6r4VRhJ8-unsplash_alfsle.jpg",
     bio:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     age: 45,
@@ -451,22 +452,6 @@ let users = [
     city: "Madrid"
   }
 ];
-// User.deleteMany()
-//   .then(() => {
-//     return User.create(users);
-//   })
-//   .then(usersCreated => {
-//     console.log(`${usersCreated.length} users created with the following id:`);
-//     console.log(usersCreated.map(u => u._id));
-//   })
-//   .then(() => {
-//     // Close properly the connection to Mongoose
-//     mongoose.disconnect();
-//   })
-//   .catch(err => {
-//     mongoose.disconnect();
-//     throw err;
-//   });
 
 let teachers = [
   {
@@ -534,22 +519,6 @@ let teachers = [
     qualifications: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
   }
 ];
-// Teacher.deleteMany()
-//   .then(() => {
-//     return Teacher.create(users);
-//   })
-//   .then(usersCreated => {
-//     console.log(`${Created.length} teachers created with the following id:`);
-//     console.log(usersCreated.map(u => u._id));
-//   })
-//   .then(() => {
-//     // Close properly the connection to Mongoose
-//     mongoose.disconnect();
-//   })
-//   .catch(err => {
-//     mongoose.disconnect();
-//     throw err;
-//   });
 
 let buddies = [
   {
@@ -635,6 +604,13 @@ let buddies = [
     languagesSpoken: ["Spanish", "Manderin Chinese"],
     learningLanguages: ["Russian", "French"],
     interests: ["Literature", "Art & Design", "Sports", "Business", "Music"]
+  },
+  {
+    username: "markjohnson",
+    buddyPreferences: { maxAge: 40, minAge: 18, gender: "male" },
+    languagesSpoken: ["German", "Manderin Chinese", "Italian"],
+    learningLanguages: ["Russian", "French"],
+    interests: ["Cooking", "Art & Design", "Yoga", "Business", "Music"]
   }
 ];
 
@@ -673,21 +649,3 @@ User.collection
   });
 // .finally(() => mongoose.disconnect());
 
-// Buddy.deleteMany()
-//   .then(() => {
-//     return Buddy.create(users);
-//   })
-//   .then(usersCreated => {
-//     console.log(
-//       `${usersCreated.length} buddies created with the following id:`
-//     );
-//     console.log(usersCreated.map(u => u._id));
-//   })
-//   .then(() => {
-//     // Close properly the connection to Mongoose
-//     mongoose.disconnect();
-//   })
-//   .catch(err => {
-//     mongoose.disconnect();
-//     throw err;
-//   });

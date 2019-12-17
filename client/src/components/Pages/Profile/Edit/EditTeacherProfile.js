@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 
-import Service from "../../../../service/auth.service";
+import Service from "../../../../service/profile.service";
 import FilesService from "../../../../service/file.service";
 import { withRouter } from "react-router-dom";
 
@@ -35,7 +35,7 @@ class EditTeacherProfile extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.Service.newTeacher(this.state)
+    this.Service.updateTeacher(this.state)
       .then(newTeacher => {
         this.props.setUser(newTeacher.data);
         this.setState({
@@ -93,6 +93,7 @@ class EditTeacherProfile extends Component {
             <Form.Label>Username</Form.Label>
             <Form.Control
               type="text"
+              id="input1"
               name="username"
               onChange={this.handleInputChange}
               value={this.state.user.username}
@@ -102,17 +103,19 @@ class EditTeacherProfile extends Component {
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
+              id="input2"
               name="email"
               onChange={this.handleInputChange}
               value={this.state.user.email}
             />
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Group>
             <Form.Label>About me</Form.Label>
             <Form.Control
               as="textarea"
               rows="3"
+              id="input3"
               type="text"
               name="bio"
               onChange={this.handleInputChange}
@@ -124,18 +127,20 @@ class EditTeacherProfile extends Component {
             <Form.Label>Qualifications</Form.Label>
             <Form.Control
               type="text"
+              id="input4"
               name="qualifications"
               onChange={this.handleInputChange}
               value={this.state.user.qualifications}
             />
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group>
             <Form.Label>
               Languages I teach (you can pick more than one):
             </Form.Label>
             <Form.Control
               as="select"
+              id="input5"
               multiple
               name="teachingLanguages"
               onChange={this.handleInputChange}
@@ -152,13 +157,14 @@ class EditTeacherProfile extends Component {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group>
             <Form.Label>
               Days of the week I am available (you can pick more than one):
             </Form.Label>
             <Form.Control
               as="select"
               multiple
+              id="input6"
               name="availabilityDays"
               onChange={this.handleInputChange}
               value={this.state.user.availabilityDays}
@@ -173,12 +179,13 @@ class EditTeacherProfile extends Component {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group>
             <Form.Label>
               Hours I am available (you can pick more than one):
             </Form.Label>
             <Form.Control
               as="select"
+              id="input7"
               multiple
               name="availabilityHours"
               onChange={this.handleInputChange}
@@ -205,15 +212,17 @@ class EditTeacherProfile extends Component {
             <Form.Control
               type="number"
               name="age"
+              id="input8"
               onChange={this.handleInputChange}
               value={this.state.user.age}
             />
           </Form.Group>
 
-          <Form.Group controlId="formGridState">
+          <Form.Group>
             <Form.Label>Gender</Form.Label>
             <Form.Control
               as="select"
+              id="input9"
               name="gender"
               onChange={this.handleInputChange}
               value={this.state.user.gender}
@@ -230,15 +239,17 @@ class EditTeacherProfile extends Component {
             <Form.Control
               type="number"
               name="price"
+              id="input10"
               onChange={this.handleInputChange}
               value={this.state.user.price}
             />
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Group>
             <Form.Label>Other conditions</Form.Label>
             <Form.Control
               as="textarea"
+              id="input11"
               rows="3"
               type="text"
               name="conditions"
@@ -252,6 +263,7 @@ class EditTeacherProfile extends Component {
             <Form.Control
               type="text"
               name="city"
+              id="input12"
               onChange={this.handleInputChange}
               value={this.state.city}
             />

@@ -20,7 +20,7 @@ class BuddyEdit extends Component {
       age: 18,
       gender: "",
       message: "",
-      city: ""
+      city: "",
     };
   }
   handleSubmit = e => {
@@ -49,7 +49,8 @@ class BuddyEdit extends Component {
             interests: [],
             age: 18,
             gender: "",
-            city: ""
+            city: "",
+           
           });
           this.props.closeModalWindow();
           this.props.history.push("/profile");
@@ -89,10 +90,11 @@ class BuddyEdit extends Component {
           <p>{this.state.message}</p>
           <h1>Buddy Profile</h1>
 
-          <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Group>
             <Form.Label>About me</Form.Label>
             <Form.Control
               as="textarea"
+              id="input1"
               rows="3"
               type="text"
               name="bio"
@@ -101,10 +103,11 @@ class BuddyEdit extends Component {
             />
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group>
             <Form.Label>My Interests(you can pick more than one):</Form.Label>
             <Form.Control
               as="select"
+              id="input2"
               multiple
               name="interests"
               onChange={this.handleInputChange}
@@ -124,13 +127,14 @@ class BuddyEdit extends Component {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group>
             <Form.Label>
               Languages I already speak (you can pick more than one):
             </Form.Label>
             <Form.Control
               as="select"
               multiple
+              id="input3"
               name="languagesSpoken"
               onChange={this.handleInputChange}
               value={this.state.languagesSpoken}
@@ -146,12 +150,13 @@ class BuddyEdit extends Component {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group>
             <Form.Label>
               Languages I am learning (you can pick more than one):
             </Form.Label>
             <Form.Control
               as="select"
+              id="input4"
               multiple
               name="learningLanguages"
               onChange={this.handleInputChange}
@@ -167,13 +172,14 @@ class BuddyEdit extends Component {
               <option>Mandarin Chinese</option>
             </Form.Control>
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group >
             <Form.Label>
               Days of the week I am available (you can pick more than one):
             </Form.Label>
             <Form.Control
               as="select"
               multiple
+              id="input5"
               name="availabilityDays"
               onChange={this.handleInputChange}
               value={this.state.availabilityDays}
@@ -188,13 +194,14 @@ class BuddyEdit extends Component {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          <Form.Group>
             <Form.Label>
               Hours I am available (you can pick more than one):
             </Form.Label>
             <Form.Control
               as="select"
               multiple
+              id="input6"
               name="availabilityHours"
               onChange={this.handleInputChange}
               value={this.state.availabilityHours}
@@ -220,16 +227,18 @@ class BuddyEdit extends Component {
             <Form.Control
               type="number"
               name="age"
+              id="input7"
               onChange={this.handleInputChange}
               value={this.state.age}
             />
           </Form.Group>
 
-          <Form.Group controlId="formGridState">
+          <Form.Group>
             <Form.Label>Gender</Form.Label>
             <Form.Control
               as="select"
               name="gender"
+              id="input8"
               onChange={this.handleInputChange}
               value={this.state.gender}
             >
@@ -244,6 +253,7 @@ class BuddyEdit extends Component {
             <Form.Label>Your City</Form.Label>
             <Form.Control
               type="text"
+              id="input9"
               name="city"
               onChange={this.handleInputChange}
               value={this.state.city}

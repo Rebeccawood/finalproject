@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 export default class Services {
   constructor() {
@@ -8,7 +8,52 @@ export default class Services {
     });
   }
 
-  getOneProfile = id => this.service.get(`/${id}`)
+  updateBuddy=(bio,languagesSpoken,learningLanguages,availabilityHours,availabilityDays,interests,age,gender,city)=>
+    this.service.post("/updateBuddy", {
+      bio,
+      languagesSpoken,
+      learningLanguages,
+      availabilityHours,
+      availabilityDays,
+      interests,
+      age,
+      gender,
+      city
+    });
 
-  newPreferences = (minAge, maxAge, gender) => this.service.post('/newpreferences', {minAge, maxAge, gender})
- }
+  updateTeacher = (
+    price,
+    conditions,
+    qualifictions,
+    email,
+    username,
+    bio,
+    availabilityHours,
+    availabilityDays,
+    age,
+    gender,
+    teachingLanguages
+  ) =>
+    this.service.post("/updateTeacher", {
+      price,
+      conditions,
+      qualifictions,
+      email,
+      username,
+      bio,
+      availabilityHours,
+      availabilityDays,
+      age,
+      gender,
+      teachingLanguages
+    });
+
+  getOneProfile = id => this.service.get(`/${id}`);
+
+  newPreferences = (minAge, maxAge, gender) =>
+    this.service.post("/newpreferences", {
+      minAge,
+      maxAge,
+      gender
+    });
+}

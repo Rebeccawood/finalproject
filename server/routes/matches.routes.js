@@ -26,11 +26,9 @@ router.get("/allProfiles", (req, res) => {
 
           const filteredArr = allProfiles.filter(userProfile =>
             languageArray.some(lang => {
-              console.log(userProfile, "pizza");
               return userProfile.buddy.languagesSpoken.includes(lang);
             })
           );
-          console.log(filteredArr, "pasta");
           res.json(filteredArr);
         })
         .catch(err => console.log("DB error", err));
@@ -52,16 +50,13 @@ router.get("/teachers", (req, res) => {
         .populate("buddy")
         .populate("teacher")
         .then(allProfiles => {
-          console.log(allProfiles, "banana");
           const languageArray = populatedUser.buddy.learningLanguages;
 
           const filteredArr = allProfiles.filter(userProfile =>
             languageArray.some(lang => {
-              console.log(userProfile, "sauce");
               return userProfile.teacher.teachingLanguages.includes(lang);
             })
           );
-          console.log(filteredArr, "tomato");
           res.json(filteredArr);
         })
         .catch(err => console.log("DB error", err));

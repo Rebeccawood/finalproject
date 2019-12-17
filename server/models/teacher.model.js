@@ -5,7 +5,7 @@ const teacherSchema = new Schema(
   {
     username: String,
     price: Number,
-    teachingLanguages: [String],
+    teachingLanguages:{ type: [String], default: ["English"]},
       // enum: [
       //   "German",
       //   "English",

@@ -36,6 +36,7 @@ class PhotoEdit extends Component {
           <Form.Label>Profile Picture</Form.Label>
           <Form.Control
             name="imgPath"
+            id="input1"
             type="file"
             onChange={this.handleFileUpload}
           />
