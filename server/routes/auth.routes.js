@@ -108,6 +108,7 @@ authRoutes.get("/loggedin", (req, res, next) => {
       .populate("buddy")
       .populate("teacher")
       .then(user => {
+        console.log(user);
         res.status(200).json(user);
       });
     return;
@@ -126,14 +127,20 @@ authRoutes.post("/new/teacher", (req, res) => {
   Teacher.create(teacher)
     .then(newTeacher => {
       const teacherId = newTeacher._id;
-      User.findByIdAndUpdate(req.user._id, {$set:{
-        teacher: teacherId,
-        bio: user.bio,
-        gender: user.gender,
-        age: user.age,
-        availabilityHours: user.availabilityHours,
-        availabilityDays: user.availabilityDays
-      }}, {new: true})
+      User.findByIdAndUpdate(
+        req.user._id,
+        {
+          $set: {
+            teacher: teacherId,
+            bio: user.bio,
+            gender: user.gender,
+            age: user.age,
+            availabilityHours: user.availabilityHours,
+            availabilityDays: user.availabilityDays
+          }
+        },
+        { new: true }
+      )
         .populate("teacher")
         .then(user => res.status(200).json(user));
     })
@@ -145,21 +152,27 @@ authRoutes.post("/new/teacher", (req, res) => {
 authRoutes.post("/new/buddy", (req, res) => {
   const { bio, gender, age, availabilityHours, availabilityDays } = req.body;
   const { languagesSpoken, learningLanguages, interests } = req.body;
-  
+
   const buddy = { languagesSpoken, learningLanguages, interests };
   const user = { bio, gender, age, availabilityHours, availabilityDays };
 
   Buddy.create(buddy)
     .then(newBuddy => {
       const buddyId = newBuddy._id;
-      User.findByIdAndUpdate(req.user._id,{$set: {
-        buddy: buddyId,
-        bio: user.bio,
-        gender: user.gender,
-        age: user.age,
-        availabilityHours: user.availabilityHours,
-        availabilityDays: user.availabilityDays
-      }},  { new: true })
+      User.findByIdAndUpdate(
+        req.user._id,
+        {
+          $set: {
+            buddy: buddyId,
+            bio: user.bio,
+            gender: user.gender,
+            age: user.age,
+            availabilityHours: user.availabilityHours,
+            availabilityDays: user.availabilityDays
+          }
+        },
+        { new: true }
+      )
         .populate("buddy")
         .then(user => res.status(200).json(user));
     })
