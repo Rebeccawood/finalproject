@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 mongoose
-  .connect(`https://speakeasy-ironhack.herokuapp.com/${process.env.DB}`, {
+  .connect(`${process.env.DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -10,4 +10,4 @@ mongoose
   )
   .catch(err => console.error("Error connecting to mongo", err));
 
-module.exports = mongoose
+module.exports = mongoose;
