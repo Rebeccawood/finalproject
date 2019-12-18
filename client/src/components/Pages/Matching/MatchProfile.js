@@ -14,7 +14,7 @@ import Qualifications from "../profile/Qualifications";
 import SpokenLanguages from "../profile/SpokenLanguages";
 import GeneralInfo from "../profile/GeneralInfo";
 import AboutMe from "../profile/AboutMe";
-import BuddyPreferences from "../profile/preferences/BuddyPreferences"
+import BuddyPreferences from "../profile/preferences/BuddyPreferences";
 
 class MatchProfile extends Component {
   constructor(props) {
@@ -25,26 +25,33 @@ class MatchProfile extends Component {
 
   componentDidMount = () => {
     const userId = this.props.match.params.id;
-    this.service.getOneProfile(userId)
+    this.service
+      .getOneProfile(userId)
       .then(theUser => this.setState({ user: theUser.data }))
       //   .then(console.log(this.state.user))
       .catch(err => console.log(err));
-    };
+  };
 
   render() {
-   
     return this.state.user ? (
       <>
-        <img className="profile-bg" src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576427060/FinalProject/istockphoto-995719694-612x612_pcvvlj.jpg" alt="profile" />
-        <Container >
+        <img
+          className="profile-bg"
+          src="https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576427060/FinalProject/istockphoto-995719694-612x612_pcvvlj.jpg"
+          alt="profile"
+        />
+        <Container>
           <Row>
-            
-
             <Col md>
               <section className="section-profile">
-                <h3 className="greeting-profile"> {this.state.user.username}</h3>
-                <AboutMe user={this.state.user} loggedInUser={this.props.loggedInUser} />
-               
+                <h3 className="greeting-profile">
+                  {" "}
+                  {this.state.user.username}
+                </h3>
+                <AboutMe
+                  user={this.state.user}
+                  loggedInUser={this.props.loggedInUser}
+                />
               </section>
             </Col>
 
@@ -77,19 +84,20 @@ class MatchProfile extends Component {
 
                 <Availability user={this.state.user} />
 
-                
-              {this.state.user.teacher ? (
-                <ConditionsTeacher user={this.state.user} />
-              ) : (
-                <BuddyPreferences user={this.state.user}  />
-              )}
+                {this.state.user.teacher ? (
+                  <ConditionsTeacher user={this.state.user} />
+                ) : (
+                  <BuddyPreferences user={this.state.user} />
+                )}
               </section>
             </Col>
           </Row>
         </Container>
+
+        {/* <Chat otherUser={this.props.user} /> */}
       </>
     ) : (
-        <h1>Retrieving user...</h1>
+      <h1 style={{marginTop: 300}}>Get comfy while we are retrieving the user...</h1>
     );
   }
 }

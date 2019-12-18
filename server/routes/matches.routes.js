@@ -20,7 +20,6 @@ router.get("/allProfiles", (req, res) => {
         ]
       })
         .populate("buddy")
-
         .then(allProfiles => {
           const languageArray = populatedUser.buddy.learningLanguages;
 

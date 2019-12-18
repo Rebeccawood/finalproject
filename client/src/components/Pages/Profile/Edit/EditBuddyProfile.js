@@ -9,7 +9,7 @@ import "../../../../styelsheets/Profile.css";
 class EditBuddyProile extends Component {
   constructor(props) {
     super(props);
-    this.Service = new Service();
+    this.service = new Service();
     this.state = {
       bio: this.props.user.bio,
       languagesSpoken: this.props.user.buddy.languagesSpoken,
@@ -25,8 +25,9 @@ class EditBuddyProile extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.Service.updateBuddy(this.state)
+    this.service.updateBuddy(this.state)
       .then(newBuddy => {
+        console.log(newBuddy)
         this.props.setUser(newBuddy.data);
         this.setState({
           bio: this.props.user.bio,

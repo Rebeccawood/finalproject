@@ -1,38 +1,40 @@
 #!/usr/bin/env node
 
-const http = require('http');
+const http = require("http");
 
-let app = require('../app');
+let app = require("../app");
 
 // catch 404 and render a not-found.hbs template
 app.use((req, res, next) => {
   res.status(404);
-  res.render('not-found');
+  res.render("not-found");
 });
 
 app.use((err, req, res, next) => {
   // always log the error
-  console.error('ERROR', req.method, req.path, err);
+  console.error("ERROR", req.method, req.path, err);
 
   // only render if the error ocurred before sending the response
   if (!res.headersSent) {
     res.status(500);
-    res.render('error');
+    res.render("error");
   }
 });
 
 let server = http.createServer(app);
 
-server.on('error', error => {
-  if (error.syscall !== 'listen') { throw error }
+server.on("error", error => {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
-    case 'EACCES':
+    case "EACCES":
       console.error(`Port ${process.env.PORT} requires elevated privileges`);
       process.exit(1);
       break;
-    case 'EADDRINUSE':
+    case "EADDRINUSE":
       console.error(`Port ${process.env.PORT} is already in use`);
       process.exit(1);
       break;
@@ -41,29 +43,35 @@ server.on('error', error => {
   }
 });
 
+// -------------------- SOCKET ---------------------- //
+
 server.listen(process.env.PORT, () => {
   console.log(`Listening on http://localhost:${process.env.PORT}`);
 });
 
-// -------------------- SOCKET ---------------------- //
+const io = require("socket.io").listen(server);
 
-const io = require('socket.io').listen(server)
-
-let userList = []
+let userList = [];
 
 io.on("connection", socket => {
   console.log("socket connected");
-
-  socket.on("newUser", user => {
-    console.log(`${user} connected`);
-    userList.push(user);
-    socket.emit("list", userList);
-    socket.broadcast.emit("list", userList);
+  // socket.on("newUser", roomName => {
+  //   // console.log(roomName, "heeeelp");
+  //   console.log(`${roomName} connected`, "test");
+  //   socket.join("privateRoom");
+  //   // userList.push(user);
+  
+  socket.on("newChat", roomName => {
+    socket.join(roomName);
   });
 
-  socket.on("messageSent", message => {
-    console.log(message);
-    socket.emit("newMessage", message);
-    socket.broadcast.emit("newMessage", message);
+  
+  
+  socket.on("messageSent", mess => {
+    console.log(mess);
+    
+    socket.to(mess.room).emit("newMessage", mess);
+    // socket.to("privateRoom").broadcast.emit("newMessage", message);
   });
-})
+  
+});

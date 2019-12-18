@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Service from "./service/auth.service";
-import io from "socket.io-client";
 
 //-------------Stylesheets ----------//
 import "./styelsheets/App.css";
@@ -15,7 +14,7 @@ import MatchProfile from "./components/pages/matching/MatchProfile";
 import TeacherProfiles from "./components/pages/matching/TeachersProfiles";
 
 //------------- Chat Components ----------//
-import MessagesView from "./components/chat/MessagesView"
+import MessagesView from "./components/chat/MessagesView";
 import Chat from "./components/chat/Chat";
 
 //------------- UI Components ----------//
@@ -26,18 +25,17 @@ import Navigation from "./components/ui/NavbarHome";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      loggedInUser: null, 
-      socketList: [] };
+    this.state = {
+      loggedInUser: null,
+      socketList: []
+    };
 
-  //  this.socket = io("http://localhost/:5000/chat");
     this.service = new Service();
   }
 
   // --------------------- USER CONFIG ------------------------ //
   setTheUser = user => {
     this.setState({ loggedInUser: user });
-
     console.log("the logged in user is:", this.state.loggedInUser);
   };
 
@@ -128,8 +126,20 @@ class App extends Component {
             }
           />
 
-          {/* <Route exact path="/messages" socket={this.state.socket} loggedInUser={this.state.loggedInUser} component={MessagesView} />
-          <Route exact path="/chat" socket={this.state.socket} user={this.state.loggedInUser} component={Chat} /> */}
+          {/* <Route
+            exact
+            path="/messages"
+            socket={this.state.socket}
+            loggedInUser={this.state.loggedInUser}
+            component={MessagesView}
+          /> */}
+          <Route
+            exact
+            path="/chat/:user"
+            render={match => (
+              <Chat loggedInUser={this.state.loggedInUser} {...match}></Chat>
+            )}
+          />
         </Switch>
       </>
     );

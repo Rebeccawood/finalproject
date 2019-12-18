@@ -3,13 +3,23 @@ import axios from "axios";
 export default class Services {
   constructor() {
     this.service = axios.create({
-      baseURL: "https://speakeasy-ironhack.herokuapp.com/api/profile",
+      baseURL:`${process.env.REACT_APP_URL}/profile`,
       withCredentials: true
     });
   }
 
-  updateBuddy=(bio,languagesSpoken,learningLanguages,availabilityHours,availabilityDays,interests,age,gender,city)=>
-    this.service.post("/updateBuddy", {
+  updateBuddy = (
+    bio,
+    languagesSpoken,
+    learningLanguages,
+    availabilityHours,
+    availabilityDays,
+    interests,
+    age,
+    gender,
+    city
+  ) =>
+    this.service.post("/updatebuddy", {
       bio,
       languagesSpoken,
       learningLanguages,
@@ -34,7 +44,7 @@ export default class Services {
     gender,
     teachingLanguages
   ) =>
-    this.service.post("/updateTeacher", {
+    this.service.post("/updateteacher", {
       price,
       conditions,
       qualifictions,

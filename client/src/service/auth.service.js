@@ -3,7 +3,7 @@ import axios from "axios";
 export default class Services {
   constructor() {
     this.service = axios.create({
-      baseURL: "https://speakeasy-ironhack.herokuapp.com/api/auth",
+      baseURL: `${process.env.REACT_APP_URL}/auth`,
       withCredentials: true
     });
   }

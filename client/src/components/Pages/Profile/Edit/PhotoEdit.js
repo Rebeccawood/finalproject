@@ -9,7 +9,8 @@ class PhotoEdit extends Component {
     this.filesService = new FilesService();
     this.state = {
       disabledButton: false,
-      buttonText: "Save Changes"
+      buttonText: "Save Changes",
+      
     };
   }
   handleFileUpload = e => {
@@ -22,7 +23,8 @@ class PhotoEdit extends Component {
         console.log("file uploaded ", response.data.secure_url);
         this.setState({
           disabledButton: false,
-          buttonText: "Save Changes"
+          buttonText: "Save Changes",
+          
         });
         this.props.history.push("/profile");
       })

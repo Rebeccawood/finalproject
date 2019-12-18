@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ButtonsEdit from "./ButtonsEdit";
-import {  Button, Container } from "react-bootstrap";
-
+import { Button, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 class AboutMe extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,12 @@ class AboutMe extends Component {
         {this.props.loggedInUser == this.props.user ? (
           <ButtonsEdit user={this.props.user} setUser={this.props.setUser} />
         ) : (
-            <Button variant="outline-dark"> Message me!</Button>
+          <Link to={`/chat/${this.props.user.username}`}>
+            <Button onClick={this.props} variant="outline-dark">
+              {" "}
+              Message me!
+            </Button>
+          </Link>
         )}
         <hr></hr>
         <h5>About me:</h5>
