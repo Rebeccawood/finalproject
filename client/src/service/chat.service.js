@@ -7,9 +7,9 @@ export default class Services {
       withCredentials: true
     });
   }
-  getChat = username => {
-    return this.service.post(`/getchat`, {username});
-  };
-
-  updateChat = (text, room) => this.service.post("/updateChat", {text, room});
+  getChat = username => this.service.post(`/getchat`, {username});
+  updateChat = (message, room) => this.service.post("/updatechat", {message, room});
+  findYourChats = () => this.service.post("/findchats")
+  getHistory = newRoom => this.service.post("/gethistory", {newRoom})
 }
+

@@ -55,23 +55,23 @@ let userList = [];
 
 io.on("connection", socket => {
   console.log("socket connected");
-  // socket.on("newUser", roomName => {
-  //   // console.log(roomName, "heeeelp");
-  //   console.log(`${roomName} connected`, "test");
-  //   socket.join("privateRoom");
-  //   // userList.push(user);
-  
   socket.on("newChat", roomName => {
+    console.log(roomName, "this is the roomname join");
     socket.join(roomName);
   });
 
-  
-  
-  socket.on("messageSent", mess => {
-    console.log(mess);
-    
-    socket.to(mess.room).emit("newMessage", mess);
-    // socket.to("privateRoom").broadcast.emit("newMessage", message);
+  socket.on("newMessage", chat => {
+    console.log("newMessage!!!!!", chat.messages);
+    io.sockets.in(chat.room).emit("recieveMessage", chat.messages);
+    // socket.to(message.room).emit("newMessage", message[0].text);
   });
-  
+
+  socket.on("messageSent", message => {
+    console.log(message.room, "this is the room == message???");
+    // io.sockets
+    //   .in(`${message[0].room}`)
+    //   .emit("messageSent", { message: message[0].text });
+    io.sockets.in(message.room).emit("messageSent", message.messages);
+    // socket.to(message[0].room).emit("messageSent", message.text);
+  });
 });

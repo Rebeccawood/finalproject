@@ -23,19 +23,21 @@ class InputChat extends Component {
   
   render() {
     return (
-      <Form>
+      <Form className="chat-field">
         <Form.Group controlId="formBasicEmail">
           <Form.Control
+          className="input-chat"
             onChange={e => {
               this.handlerText(e);
             }}
             type="text"
-            placeholder="Your message"
+            placeholder="start typing here ...."
             value={this.state.text}
           />
         </Form.Group>
 
-        <Button
+        <Button 
+        className="button"
           variant="dark-outline"
           type="submit"
           onClick={e => {

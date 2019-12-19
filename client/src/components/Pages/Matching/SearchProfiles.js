@@ -30,10 +30,10 @@ class SearchProfiles extends Component {
   render() {
  return (
   <>
-     <div className="profile-bg">
+     <div >
 
        <Container className="search-profile">
-         <Row>
+         <Row >
            {this.state.user.map(user => (
              <ProfileCard key={user._id} user={user} />
            ))}

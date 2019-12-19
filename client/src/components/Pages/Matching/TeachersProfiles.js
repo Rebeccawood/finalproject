@@ -29,7 +29,7 @@ class TeachersProfiles extends Component {
 
   render() {
     return (
-      <div className="profile-bg">
+      <div className="search-bg">
         <section className="search-profile">
           <Container>
             <Row>

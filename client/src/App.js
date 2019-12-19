@@ -27,7 +27,6 @@ class App extends Component {
     super(props);
     this.state = {
       loggedInUser: null,
-      socketList: []
     };
 
     this.service = new Service();
@@ -126,13 +125,17 @@ class App extends Component {
             }
           />
 
-          {/* <Route
+          <Route
             exact
             path="/messages"
-            socket={this.state.socket}
-            loggedInUser={this.state.loggedInUser}
-            component={MessagesView}
-          /> */}
+            render={() =>
+              this.state.loggedInUser ? (
+                <MessagesView user={this.state.loggedInUser} />
+              ) : (
+                  <Redirect to="/" />
+                )
+            }
+          />
           <Route
             exact
             path="/chat/:user"

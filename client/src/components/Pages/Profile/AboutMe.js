@@ -22,12 +22,12 @@ class AboutMe extends Component {
           <p>This is a teacher-profile</p>
         )}
 
-        {this.props.loggedInUser == this.props.user ? (
+        {this.props.loggedInUser === this.props.user ? (
           <ButtonsEdit user={this.props.user} setUser={this.props.setUser} />
         ) : (
           <Link to={`/chat/${this.props.user.username}`}>
-            <Button onClick={this.props} variant="outline-dark">
-              {" "}
+            <Button variant="outline-dark">
+              
               Message me!
             </Button>
           </Link>

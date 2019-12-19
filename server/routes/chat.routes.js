@@ -23,14 +23,31 @@ router.post("/getchat", (req, res) => {
     .catch(err => console.log("DB error", err));
 });
 
-router.post("/updateChat", (req, res) => {
-  let { text, room } = req.body;
-  console.log(req.body.text);
+router.post("/updatechat", (req, res) => {
+  let { message, room } = req.body;
+  // let updatedMessage = req.user.username + ":" + message
+  console.log(message, "here is the text");
 
-  Chat.findByIdAndUpdate(room, { history: text }).then(updatedChat => {
+  Chat.findByIdAndUpdate(room, {
+    $push: { history: { message: message.text, user: message.user } }
+  }).then(updatedChat => {
     console.log(updatedChat, "update history");
     res.json(updatedChat);
   });
 });
 
+router.post("/findchats", (req, res) => {
+  Chat.find({ users: { $in: req.user.username } })
+    .then(chats => {
+      console.log("---- chats", chats, "----- user", req.user.username);
+      res.json(chats);
+    })
+    .catch(err => console.log(err));
+});
+
+router.post("/gethistory", (req, res) => {
+  let chatId = req.body.newRoom;
+
+  Chat.findById(chatId).then(chat => res.json(chat));
+});
 module.exports = router;

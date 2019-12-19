@@ -1,35 +1,51 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import Chat from './Chat'
 
-import io from 'socket.io-client'
+import List from "../pages/profile/List";
+import ChatCard from "./ChatCard";
+import Service from "../../service/chat.service";
+import { Container, Row, Col } from "react-bootstrap";
+
+import io from "socket.io-client";
 
 class MessagesView extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
+    this.service = new Service();
     this.state = {
-      userList : [],
-      user: null
-    }
+      chats: []
+    };
 
-    this.socket = this.props.socket
+    this.socket = this.props.socket;
   }
-  
-      updateUserList = ()=> {
-        let copyUserList = []
-        console.log(this.props, "pancakes")
-        copyUserList.push(this.props.loggedInUser, this.props.user)
-          this.setState({userList: copyUserList})
 
-    this.socket.on('list', list => {
-      console.log(this.socket)
-      this.setState({...this.state, userList: list})
-    })
+  getMessages = () => {
+    let chatsCopy = [...this.state.chats];
+    this.service.findYourChats().then(yourChats => {
+      console.log(yourChats.data[0].users);
+      chatsCopy.push(yourChats.data[0].users);
+      this.setState({ chats: chatsCopy });
+    });
+  };
+  componentDidMount() {
+    this.getMessages();
   }
-  render(){
+  render() {
+    console.log(this.state.chats);
     return (
-      <Link style={{marginTop: 500, marginLeft: 100}} to="/chat">Chat</Link>
-    )
+      <Container>
+        <h3 style={{ marginTop: 100 }}>Your Messages:</h3>
+
+        {this.state.chats.map((chat, idx) => (
+          <ChatCard
+            key={idx}
+            loggedInUser={this.props.loggedInUser}
+            userUsername={chat}
+          />
+        ))}
+      </Container>
+    );
   }
 }
-export default MessagesView
+export default MessagesView;
