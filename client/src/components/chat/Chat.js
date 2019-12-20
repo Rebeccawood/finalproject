@@ -10,7 +10,7 @@ export default class Chat extends Component {
   constructor(props) {
     super(props);
     this.service = new Service();
-    this.socket = io("http://localhost:5000/");
+    this.socket = io("https://speakeasy-ironhack.herokuapp.com/");
     this.state = {
       chat: { messages: [], room: "", user: "" }
     };
