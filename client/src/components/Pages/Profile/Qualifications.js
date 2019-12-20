@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Container } from "react-bootstrap";
 
 class Qualifications extends Component {
   constructor(props) {
@@ -8,11 +8,11 @@ class Qualifications extends Component {
   }
   render(){
  return (
-  <>
+  <Container>
        <h5>Qualifications:</h5>
        <p>{this.props.user.teacher.qualifications}</p>
-     
-  </>
+     <hr></hr>
+  </Container>
  )}}
 
  export default Qualifications

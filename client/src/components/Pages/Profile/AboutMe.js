@@ -10,16 +10,19 @@ class AboutMe extends Component {
   render() {
     return (
       <Container>
+      <div className="about-me">
         <img
           src={this.props.user.imgPath}
           className="profile-img"
           alt="profile-picture"
         />
+          <br></br>
 
         {this.props.user.buddy ? (
-          <p>This is a buddy-profile</p>
+          <>  <br></br>
+              <p className="about-me">This is a buddy-profile</p> </>
         ) : (
-          <p>This is a teacher-profile</p>
+              <>   <br></br> <p className="about-me">This is a teacher-profile</p> </>
         )}
 
         {this.props.loggedInUser === this.props.user ? (
@@ -32,6 +35,7 @@ class AboutMe extends Component {
             </Button>
           </Link>
         )}
+        </div>
         <hr></hr>
         <h5>About me:</h5>
         <p>{this.props.user.bio}</p>

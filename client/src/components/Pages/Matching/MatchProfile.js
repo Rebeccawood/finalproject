@@ -66,6 +66,11 @@ class MatchProfile extends Component {
                 ) : (
                   <Interests user={this.state.user} />
                 )}
+                {this.state.user.teacher ? (
+                  <ConditionsTeacher user={this.state.user} />
+                ) : (
+                  <BuddyPreferences user={this.state.user} />
+                )}
               </section>
             </Col>
 
@@ -84,9 +89,7 @@ class MatchProfile extends Component {
 
                 <Availability user={this.state.user} />
 
-                {this.state.user.teacher ? (
-                  <ConditionsTeacher user={this.state.user} />
-                ) : (
+                {this.state.user.buddy && (
                   <BuddyPreferences user={this.state.user} />
                 )}
               </section>
@@ -97,7 +100,9 @@ class MatchProfile extends Component {
         {/* <Chat otherUser={this.props.user} /> */}
       </>
     ) : (
-      <h1 style={{marginTop: 300}}>Get comfy while we are retrieving the user...</h1>
+      <h1 style={{ marginTop: 300 }}>
+        Get comfy while we are retrieving the user...
+      </h1>
     );
   }
 }

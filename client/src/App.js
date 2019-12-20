@@ -130,7 +130,7 @@ class App extends Component {
             path="/messages"
             render={() =>
               this.state.loggedInUser ? (
-                <MessagesView user={this.state.loggedInUser} />
+                <MessagesView loggedInUser={this.state.loggedInUser} />
               ) : (
                   <Redirect to="/" />
                 )

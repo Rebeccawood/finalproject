@@ -18,6 +18,7 @@ class LearningLanguages extends Component {
             return <List key={idx} list={language} />;
           })}
         </ul>
+        <hr></hr>
       </Container>
     );
   }

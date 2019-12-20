@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import List from "./List"
-
+import { Container } from "react-bootstrap";
 class Availability extends Component {
   constructor(props) {
     super(props);
@@ -10,22 +10,24 @@ class Availability extends Component {
 render(){
 
  return (
- <>
+ <Container>
      <h5>Available Days:</h5>
-     <p>
+     <ul>
      
        {this.props.user.availabilityDays.map((day, idx) => (
          <List key={idx} list={day} />
        ))}
-     </p>
+     </ul>
+     <hr></hr>
      <h5>Available Hours:</h5>
-     <p>
+     <ul>
        {this.props.user.availabilityHours.map((hour, idx) => (
          <List key={idx} list={hour} />
        ))}
-     </p> 
-   </>
- );}
+     </ul> 
+     <hr></hr>
+  </Container>
+ )}
 };
 
 export default Availability;

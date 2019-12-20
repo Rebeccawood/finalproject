@@ -51,16 +51,20 @@ class Profile extends Component {
                   setUser={this.props.setUser}
                   user={this.props.loggedInUser}
                 />
+          
+               
+            
                 {this.props.loggedInUser.teacher ? (
-                  <Price user={this.props.loggedInUser} />
+                  <Price user={this.props.loggedInUser} /> 
+                
                 ) : (
                   <Interests user={this.props.loggedInUser} />
                 )}
-                {this.props.loggedInUser.teacher ? (
-                  <ConditionsTeacher user={this.props.loggedInUser} />
-                ) : (
+               
+                {this.props.loggedInUser.buddy ? (
                   <BuddyPreferences user={this.props.loggedInUser} />
-                )}
+                ) : (<ConditionsTeacher user={this.props.loggedInUser} />)}
+
               </section>
             </Col>
 
@@ -71,6 +75,9 @@ class Profile extends Component {
                 ) : (
                   <LearningLanguages user={this.props.loggedInUser} />
                 )}
+              
+               
+               
                 {this.props.loggedInUser.teacher ? (
                   <Qualifications user={this.props.loggedInUser} />
                 ) : (

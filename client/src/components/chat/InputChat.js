@@ -38,7 +38,7 @@ class InputChat extends Component {
 
         <Button 
         className="button"
-          variant="dark-outline"
+          variant="outline-dark"
           type="submit"
           onClick={e => {
             this.handlerSubmit(e);

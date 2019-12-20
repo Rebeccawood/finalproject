@@ -16,13 +16,13 @@ export default class Chat extends Component {
     };
 
     this.sendMessage = text => {
-      console.log(text, "WWWWWAATT");
+      
       if (text.trim() === "") return;
 
       let mess = [...this.state.chat.messages];
 
       mess.push({ text, user: this.props.loggedInUser.username });
-      console.log(mess, "messsssssssy");
+     
       this.setState(
         {
           chat: {
@@ -35,11 +35,11 @@ export default class Chat extends Component {
           console.log(this.state.chat, "heelllpppppppp");
 
           let chat = { ...this.state.chat };
-          console.log(chat.messages, "noooooooooo");
-          // this.socket.emit("messageSent", chat);
+       
+        
           let room = this.state.chat.room;
           let message = this.state.chat.messages;
-          console.log(this.state.chat.messages, "!!!", this.state, "yay");
+        
           this.service.updateChat(message, room);
           this.socket.emit("newMessage", chat);
         }
@@ -47,14 +47,14 @@ export default class Chat extends Component {
     };
 
     this.socket.on("recieveMessage", message => {
-      console.log(message, "hellooooo messages");
+     
       let mess = [...this.state.chat.messages];
       mess.push(message);
 
       this.setState({ chat: { ...this.state.chat, messages: message } }, () => {
-        console.log(this.state.chat, "whaaaatt");
+     
         let chat = { ...this.state.chat };
-        // this.socket.emit("newMessage", chat);
+      
       });
     });
   }
@@ -68,9 +68,9 @@ export default class Chat extends Component {
   setRoom = () => {
     let username = this.props.match.params.user;
     this.service.getChat(username).then(newChat => {
-      // console.log(newChat.data[0]._id);
+    
       let newRoom = newChat.data[0]._id;
-      console.log(newRoom, "in here i create the room");
+    
       this.setState({ chat: { ...this.state.chat, room: newRoom } });
 
       this.socket.emit("newChat", newRoom);
@@ -89,14 +89,14 @@ export default class Chat extends Component {
   }
 
   render() {
-    console.log(this.state.chat.messages[0], "111111111111111111111111");
+   
 
     return this.props.loggedInUser ? (
       <Container>
         <Row>
           <Col lg={6}>
             <div className="chatBox" id="chatBox">
-              {/* <p>{this.state.chat.messages[0].text}</p> */}
+             
               {this.state.chat.messages.map((elm, idx) => {
                 return (
                   <>

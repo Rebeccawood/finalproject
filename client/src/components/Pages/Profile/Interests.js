@@ -15,7 +15,7 @@ class Interests extends Component {
   <h5>Interests:</h5>
 
      <ul>
-       {this.props.user.buddy.interests.map(
+      {this.props.user.buddy.interests.map(
          (interest, idx) => {
            return <List key={idx} list={interest} />;
          }
