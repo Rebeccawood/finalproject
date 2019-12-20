@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const chatSchema = new Schema(
   {
     users: [String],
-    history: [{ message: [String], user: String }],
+    history: [{ text: String, user: String }],
     room: Schema.ObjectId
   },
   {

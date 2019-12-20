@@ -20,6 +20,7 @@ class Interests extends Component {
            return <List key={idx} list={interest} />;
          }
        )}
+       <hr></hr>
      </ul>
  
    

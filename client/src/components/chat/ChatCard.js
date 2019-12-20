@@ -16,8 +16,7 @@ class ChatCard extends Component {
   render() {
     return (
       <div>
-
-<Row>
+        {/* <Row>
 <Col className="chat-card" md={3}>
           <h4>isabel-profe</h4>
           <Link to="/chat/isabel-profe"> <Button variant="outline-dark">Check their messages!</Button> </Link>
@@ -39,18 +38,24 @@ class ChatCard extends Component {
             <Link to="/chat/isabel-profe"> <Button variant="outline-dark">Check their messages!</Button> </Link>
 
           </Col>
-        </Row>
+        </Row> */}
 
-        {/* <Col className="chat-card" sm={3}>
-          {this.props.userUsername.map(users => (
-            <>
-              <h3>{users}</h3> <br></br>
-              <Link to="/chats/">
-                <Button variant="outline-dark">See chat </Button>
-              </Link>
-            </>
-          ))}
-        </Col> */}
+        <Col className="chat-card" sm={3}>
+          {this.props.userUsername.map(users => {
+            if (users !== this.props.loggedInUser.username) {
+              return (
+                <>
+                  <h3>{users}</h3> <br></br>
+                  <Link to={`/chat/${users}`}>
+                    <Button variant="outline-dark">See chat </Button>
+                  </Link>
+                </>
+              );
+            } else {
+              return "";
+            }
+          })}
+        </Col>
       </div>
     );
   }

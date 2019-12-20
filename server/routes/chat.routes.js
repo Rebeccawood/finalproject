@@ -25,11 +25,16 @@ router.post("/getchat", (req, res) => {
 
 router.post("/updatechat", (req, res) => {
   let { message, room } = req.body;
-  // let updatedMessage = req.user.username + ":" + message
-  console.log(message, "here is the text");
+
+  console.log(message[message.length - 1].text, "here is the text");
 
   Chat.findByIdAndUpdate(room, {
-    $push: { history: { message: message.text, user: message.user } }
+    $push: {
+      history: {
+        text: message[message.length - 1].text,
+        user: message[message.length - 1].user
+      }
+    }
   }).then(updatedChat => {
     console.log(updatedChat, "update history");
     res.json(updatedChat);

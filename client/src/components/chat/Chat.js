@@ -90,7 +90,7 @@ export default class Chat extends Component {
 
   render() {
    
-
+    console.log(this.state.chat.messages)
     return this.props.loggedInUser ? (
       <Container>
         <Row>
