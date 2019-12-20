@@ -19,6 +19,7 @@
 }
 .profile-card {
   border: 1px darkgray solid;
+  position: absolute;
   border-radius: 3%;
   box-shadow: 6px 1px 17px;
   padding: 10px;
