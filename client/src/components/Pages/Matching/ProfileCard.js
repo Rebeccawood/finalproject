@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Col} from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 import "../../../styelsheets/Matches.css";
@@ -12,19 +12,24 @@ class ProfileCard extends Component {
   render() {
     return (
       <>
-        <Col className="profile-card" sm={3}>
+        <Col
+
+          className="profile-card search-profile"
+          lg={4}
+        >
           <img src={this.props.user.imgPath} alt={this.props.user.username} />
           <h3>{this.props.user.username}</h3>
           <p>Age: {this.props.user.age}</p>
-          
+
           {this.props.user.teacher && (
             <p>
-              This is a teacher! <br></br> Price: {this.props.user.teacher.price}
+              This is a teacher! <br></br> Price:{" "}
+              {this.props.user.teacher.price}
               €/hr
             </p>
           )}
-         
-          <Link 
+
+          <Link
             className="btn btn-sm btn-dark"
             to={`/profile/${this.props.user._id}`}
           >

@@ -98,6 +98,7 @@ class ButtonsEdit extends Component {
         >
           <Modal.Body>
             <PhotoEdit
+            loggedInUser={this.props.loggedInUser}
               user={this.props.user}
               setUser={this.props.setUser}
               closeModalWindow={this.handleCloseImg}

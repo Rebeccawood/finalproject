@@ -68,7 +68,7 @@ export default class Chat extends Component {
   setRoom = () => {
     let username = this.props.match.params.user;
     this.service.getChat(username).then(newChat => {
-    
+      console.log(newChat)
       let newRoom = newChat.data[0]._id;
     
       this.setState({ chat: { ...this.state.chat, room: newRoom } });

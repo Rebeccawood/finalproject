@@ -28,21 +28,19 @@ class SearchProfiles extends Component {
   };
 
   render() {
- return (
-  <>
-     <div >
-
-       <Container className="search-profile">
-         <Row >
-           {this.state.user.map(user => (
-             <ProfileCard key={user._id} user={user} />
-           ))}
-         </Row>
-       </Container>
-  
-     </div>
-   </>
- );
+    return (
+      <>
+        <div className="search-bg">
+          <Container>
+            <Row style={{ justifyContent: "space-around" }}>
+              {this.state.user.map(user => (
+                <ProfileCard key={user._id} user={user} />
+              ))}
+            </Row>
+          </Container>
+        </div>
+      </>
+    );
   }
 }
 export default SearchProfiles;

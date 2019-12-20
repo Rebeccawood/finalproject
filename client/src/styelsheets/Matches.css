@@ -5,17 +5,18 @@ img {
     border-radius: 50%;
 }
 
-.teachers-filters {
+/* .teachers-filters {
     margin-top: 200px;
-}
+} */
 .search-profile {
-    margin-top: 200px;
+    margin-top: 80px;
 }
 .search-bg {
-  border-radius: 0;
+   border-radius: 0;
   background: url("https://res.cloudinary.com/ddfbpuv7c/image/upload/v1576427060/FinalProject/istockphoto-995719694-612x612_pcvvlj.jpg");
   background-repeat: no-repeat;
   position: absolute;
   background-size: cover;
+  /* height: 200vh; */
   width: 100vw;
 }

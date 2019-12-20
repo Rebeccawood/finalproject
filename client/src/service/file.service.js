@@ -9,4 +9,8 @@ export default class Services {
         });
     }
 
-    handleUpload = theFile => this.service.post('/upload', theFile) }
+    handleUpload = theFile => this.service.post('/upload', theFile) 
+    editPhoto = imgPath => this.service.post ("editphoto", {imgPath})
+
+  }
+  

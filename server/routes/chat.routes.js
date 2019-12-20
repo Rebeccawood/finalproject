@@ -15,7 +15,8 @@ router.post("/getchat", (req, res) => {
         ? Chat.create(chat)
             .then(newChat => {
               console.log(newChat, "the chat created");
-              res.json(newChat);
+              Array.isArray(newChat) ? res.json(newChat) : res.json([newChat])
+              
             })
             .catch(err => console.log(err, "error from create chat"))
         : res.json(theChat);

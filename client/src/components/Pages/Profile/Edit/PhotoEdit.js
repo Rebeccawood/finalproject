@@ -10,6 +10,7 @@ class PhotoEdit extends Component {
     this.state = {
       disabledButton: false,
       buttonText: "Save Changes",
+      // imgPath: this.props.loggedInUser.imgPath
       
     };
   }
@@ -24,13 +25,21 @@ class PhotoEdit extends Component {
         this.setState({
           disabledButton: false,
           buttonText: "Save Changes",
+          // imgPath: response.data.secure_url
           
         });
         this.props.history.push("/profile");
       })
       
       .catch(err => console.log(err));
-  };
+  }
+
+  // handleUpload =()=> {
+  //   this.filesService.editPhoto(this.state.imgPath)
+  //     .then(user => this.props.setUser(user.data))
+  //     this.props.closeModalWindow();
+  //   this.props.history.push("/profile");
+  // }
   render() {
     return (
       <Form encType="multipart/form-data">
@@ -41,6 +50,7 @@ class PhotoEdit extends Component {
             id="input1"
             type="file"
             onChange={this.handleFileUpload}
+            // value={this.state.imgPath}
           />
         </Form.Group>
 
@@ -48,6 +58,7 @@ class PhotoEdit extends Component {
           variant="outline-dark"
           type="submit"
           disabled={this.state.disabledButton}
+          // onClick={this.handleUpload}
         >
           {this.state.buttonText}
         </Button>

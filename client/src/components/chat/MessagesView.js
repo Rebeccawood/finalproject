@@ -23,9 +23,13 @@ class MessagesView extends Component {
   getMessages = () => {
     let chatsCopy = [...this.state.chats];
     this.service.findYourChats().then(yourChats => {
-      console.log(yourChats.data[0].users);
-      chatsCopy.push(yourChats.data[0].users);
-      this.setState({ chats: chatsCopy });
+      console.log(yourChats.data, "helllooooooooooo");
+
+      let chatsArray = yourChats.data.map(chat => chat.users);
+      console.log(chatsArray);
+      this.setState({ chats: chatsArray }, () =>
+        console.log(this.state.chats, "whatttttt")
+      );
     });
   };
   componentDidMount() {
@@ -33,21 +37,26 @@ class MessagesView extends Component {
   }
 
   render() {
-    console.log(this.state.chats);
+    console.log(this.state.chats, "chattttttsss");
 
     return (
       <div className="chat-bg">
         <Container>
-          <h3 style={{ marginTop: 100 }}>Your Messages:</h3>
-          <br></br>
-
-          {this.state.chats.map((chat, idx) => (
-            <ChatCard
-              key={idx}
-              loggedInUser={this.props.loggedInUser}
-              userUsername={chat}
-            />
-          ))}
+          <Row>
+            <h3 style={{ marginTop: 100 }}>Your Messages:</h3>
+            <br></br>
+          </Row>
+          <Row>
+            {this.state.chats.map((chat, idx) => {
+              return (
+                <ChatCard
+                  key={idx}
+                  loggedInUser={this.props.loggedInUser}
+                  userUsername={chat}
+                />
+              );
+            })}
+          </Row>
         </Container>
       </div>
     );

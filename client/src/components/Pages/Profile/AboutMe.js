@@ -26,7 +26,7 @@ class AboutMe extends Component {
         )}
 
         {this.props.loggedInUser === this.props.user ? (
-          <ButtonsEdit user={this.props.user} setUser={this.props.setUser} />
+          <ButtonsEdit user={this.props.user} loggedInUser={this.props.loggedInUser} setUser={this.props.setUser} />
         ) : (
           <Link to={`/chat/${this.props.user.username}`}>
             <Button variant="outline-dark">
