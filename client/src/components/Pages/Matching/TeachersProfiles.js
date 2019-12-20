@@ -32,7 +32,7 @@ class TeachersProfiles extends Component {
       <div className="search-bg">
         <section className="search-profile">
           <Container>
-            <Row>
+            <Row style={{ justifyContent: "space-around" }}>
               {this.state.user.map(user => (
                 <ProfileCard key={user._id} user={user} />
               ))}
