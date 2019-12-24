@@ -27,11 +27,13 @@ height:100px;
   border: 1px darkgray solid;
   box-shadow: 6px 1px 17px;
   border-radius: 3%;
+  
   /* background:rgb(202, 236, 252); */
 }
 .chat-text {
   margin-top: 20px;
   width: 490px;
+  /* margin-right: 5px; */
 }
 .chat-name {
   margin-top: 20px;
